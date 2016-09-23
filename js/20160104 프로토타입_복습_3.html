@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>프로토타입 복습 2</title>
+</head>
+<body>
+<script>
+
+function yearChange() {
+	var a = null;
+
+	$('.current_year div').each(function(){
+		if($(this).css('display') == 'block'){
+			a = $(this).index();
+		}
+	});
+
+	if($(this).hasClass('btn_year_prev')){
+		if(a == 0 ){
+			a = $('.current_year div').length - 1;
+		}else {
+			a -= 1;
+		}
+	}else if($(this).hasClass('btn_year_next')){
+		if(a == ($('.current_year div').length - 1) ){
+			a = 0;
+		}else {
+			a += 1;
+		}
+	}
+
+	$('.current_year div').css({'display' : 'none'});
+	$('.current_year div').eq(a).css({'display' : 'block'});
+
+	return false;
+}; //yearChange
+
+$('.tab_year a').on('click', yearChange);
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

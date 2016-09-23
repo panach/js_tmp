@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>정규표현식 - 1</title>
+</head>
+<body>
+
+
+<script>
+/*
+^    입력값의 시작
+$    입력값의 끝
+*    0번 이상 반복
+?     0~1번 반복
++    1번 이상 반복
+{n}    정확히 n번 반복
+{n.}     n번 이상 반복
+{n,m}     최소n, 최대m 반복
+.     줄바꿈 제외 모든 물자열
+[...]     대괄호 안의 모든 문자열 - /a[px]e/  = ape 일치, axe 일치, ale 불일치
+[^...]     대괄호 안의 모든 문자 제외
+\b     단어경계 - /\bno/ = nono 에서 첫번째 no 와 일치
+\B     단어 경계를 제외한 모든 문자  /\Bno/ = nono 두번째 no 일치
+\d     0 부터 9
+\D     숫자 제외
+\w     단어(알파벳, 숫자, 밑줄)
+\W     단어 문자 아닌 문자(알파벳, 숫자, 밑줄 제외)
+\n     줄바꿈
+\s     하나의 공백
+\S     공백 문자가 아닌 모든 문자
+\t     탭
+(x)     캡처할 관호     일치한 문자들을 기억
+
+*/
+
+//검색하는 문자열이 존재하는지 확인하기
+
+function c(a){
+    window.console.log(a);
+}
+var co = new Array();
+co[0] = "Joe's Cooking Book";
+co[1] = "Sam's Cookbook";
+co[2] = "javaScript CookBook";
+co[3] = "javaScript BookCook";
+co[3] = "CookingCookingCookingCookingCooking Book";
+
+
+    var pattern = /Cook.*Book/;
+    // .  줄넘김 제외 모든 글자
+    // *  0번 이상 반복
+
+    for(var i = 0; i < co.length; i++){
+        c(co[i]+" : "+pattern.test(co[i]));
+    }
+
+
+
+    /*
+        test()
+            두가지 변수를 가진다
+            첫번째는 테스트 할 문자
+            두번째는 변경자            두번째 인수는 변경 가능
+            test 메서드는 정규표현식을 주어진 문자열에 적용해 보고 일치하면 true 불일치 하면 false 를 반환
+
+            pattern 설명
+            Cook 을 검색한후 뒤에 Book 을 검색하는대  두문장 사이에 (.) 줄바꿈을 제외한 모든 문자 (*) 0번 이상 반복
+    */
+
+
+
+</script>
+</body>
+</html>

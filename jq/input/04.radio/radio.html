@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>라디오 type1</title>
+<style>
+	body{font-size:12px}
+	.blind{font-size:0;line-height:0;color:transparent}
+	p{line-height:1.5}
+	.hide{position:absolute;top:0;left:0;width:0;left:0;line-height:0;opacity:0}
+	.ipt_rdo{display:inline-block;margin-bottom:20px;padding-left:15px;background:url(bg_ipt.png) 0 0 no-repeat;line-height:13px;cursor:pointer}
+	.ipt_rdo.active{background-position:0 100%}
+</style>
+</head>
+<body>
+
+<h1>라디오 버튼 만들기</h1>
+
+<h2>Type1</h2>
+<p>
+	사용 조건이 있다  <br>
+	lebel 내부에 input 과 텍스트가 같이 있어야 한다. <br>
+	input의 id 값이 있으며 label 의 for 는 오류 없이 input 의 label 과 매칭이 되어야 한다.  <br>
+	그로 인해 label 을 클릭시 radio 의 기본동작이 작동해야 한다. <br>
+	name 을 통한 고유 기능은 유지 되어야 한다.<br>
+	for 와 name 의 기본기능을 마크업에서 제거 하고 js 로 구현하는 형태는 다른 타입으로 구현하도록 한다. <br>
+	<br>
+	라디오 버튼의 활성화 class 명은 active 이다
+</p>
+
+<h3>구조</h3>
+
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for&#61;"ipt_rdo1"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type&#61;"radio" name&#61;"ipt" id&#61;"ipt_rdo1" class&#61;"hide"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test 텍스트<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/label&gt;<br>
+</p>
+
+<h3>css 및 js 적용</h3>
+<div class="codeViewBox">
+	<label for="ipt_rdo1" class="ipt_rdo active">
+		<input type="radio" name="ipt" id="ipt_rdo1" class="hide" checked>
+		test 텍스트
+	</label> <br>
+	<label for="ipt_rdo2" class="ipt_rdo">
+		<input type="radio" name="ipt" id="ipt_rdo2" class="hide">
+		test 텍스트
+	</label><br>
+	<label for="ipt_rdo3" class="ipt_rdo">
+		<input type="radio" name="ipt" id="ipt_rdo3" class="hide">
+		test 텍스트
+	</label><br>
+</div>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="tmp.js"></script>
+</body>
+</html>

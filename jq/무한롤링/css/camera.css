@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* NHN Technology Services UI Development 2Team LEH 121126 */
+
+/* Common */
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0}
+body,input,textarea,select,button,table{font-size:14px;line-height:1.25em}
+body{position:relative;height:100%;font-family:HelveticaNeue,HiraKakuProN-W3,sans-serif;color:#000;-webkit-text-size-adjust:none}
+.s input,.s textarea,.s select,.s button,.s table{font-family:HelveticaNeue,HiraKakuProN-W3,sans-serif}
+img,fieldset{border:none}
+ul,ol{list-style:none}
+em,address{font-style:normal;word-break:break-all}
+a{color:#0046d3;text-decoration:decoration}
+table{border-collapse:collapse}
+input,button,select,textarea{outline:none}
+textarea{resize:none}
+select{-webkit-apearance:none}
+hr{display:none !important}
+.u_hc,.u_skip{visibility:hidden;overflow:hidden;position:absolute;left:-1000em;width:0;height:0;font-size:0;line-height:0}
+::-webkit-input-placeholder{color:#ccc}
+
+/* content */
+#ct{overflow:hidden;clear:both;width:100%;color:#000}
+
+.sthx_area{line-height:16px;text-shadow:0 1px #fff;word-break:break-all}
+.sthx_area .h_wrap{position:relative;width:100%;height:32px;margin-top:-1px;border-top:1px solid #d1d1d1;background:#eef0f0 url(../im/bg_h.png) repeat-x 0 0;background-size:5px 32px;color:#83898d;line-height:31px;text-align:center}
+.sthx_area .h_wrap:first-child{margin-top:0}
+.sthx_area .h_wrap h2{font-size:12px}
+.sthx_area .hsub_wrap{position:relative;padding:18px 0;border-top:1px solid #fff;border-bottom:1px solid #d9dcde;background-color:#f3f4f6}
+.sthx_area .hsub_wrap h3{padding:0 34px 0 10px;vertical-align:middle;color:#111;font-size:14px}
+.sthx_area .hsub_wrap:after,.sthx_area .on .hsub_wrap:after{display:block;position:absolute;right:10px;top:50%;width:15px;height:15px;margin-top:-6px;content:'';background:url(../im/btn_arr.png) no-repeat;background-size:15px 15px}
+.sthx_area .on .hsub_wrap:after{-webkit-transform:rotate(180deg);transform:rotate(180deg)}
+.sthx_area .cont{display:none;border-bottom:1px solid #d9dcde;background-color:#e8ebec;font-size:12px;color:#333;box-shadow:inset 0 2px 2px 0 #dcdfe1, inset 0 -2px 2px 0 #dcdfe1}
+.sthx_area .on .cont{display:block}
+.sthx_area .dsc{padding:5px 16px 11px 10px}
+.sthx_area .dsc li{margin-top:5px}
+.sthx_area .url,.sthx_area .dsc2{padding:10px 16px 11px 11px;border-top:1px solid #d9dcde}
+
+

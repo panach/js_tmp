@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>프로퍼티 종류</title>
+</head>
+<style>
+	html{height:100%}
+	body{position:relative;height:100%;margin:0}
+	p{line-height:200px}
+	input{width:200px;height:30px;font-size:18px}
+	#area{position:absolute;top:50%;left:50%;width:200px;height:200px;margin:-100px 0 0 -100px;background-color:lightslategray;}
+</style>
+<body>
+
+좌표 X
+<input type="text" id="ipt">
+좌표 Y
+<input type="text" id="ipt2">
+
+
+<div id="area"></div>
+
+
+<script>
+var box = document.getElementById("area").getBoundingClientRect();
+
+document.getElementById("area").onmousemove = mouseMove;// 박스에 마우스 움직임이 발생하면 mouseMove 를 실행
+
+
+function mouseMove(ev){
+	ev           = ev || window.event; // or 연산자 두개의 입력 값중 어느하나라도 true 이면 true 를 리턴
+	var mousePos = mouseCoords(ev),
+		boxPos = {
+			x : mousePos.x - box.left,
+			y : mousePos.y - box.top
+		}
+	document.getElementById('ipt').value = boxPos.x;
+	document.getElementById('ipt2').value = boxPos.y;
+}
+
+function mouseCoords(ev){
+	if(ev.pageX || ev.pageY){
+		return {x:ev.pageX, y:ev.pageY};
+	}
+	return {
+		x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+		y:ev.clientY + document.body.scrollTop - document.body.clientTop
+	};
+}
+
+
+
+</script>
+</body>
+</html>

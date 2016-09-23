@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>부분 추출</title>
+</head>
+<body>
+
+
+<script>
+    function c(a){window.console.log(a);}
+    var a1 = "This is one sentence. This is a sentence with a list of items: cherries, oranges, apples, bananas.";
+    var start = a1.indexOf(":");
+    var end = a1.indexOf(".", start+1);
+
+    var list = a1.substring(start+2, end);
+    c(a1);
+    c(start);
+    c(end);
+    c(list);
+
+</script>
+</body>
+</html>

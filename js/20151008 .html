@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>프로퍼티</title>
+</head>
+<body>
+
+프로퍼티
+
+<script>
+
+/*
+var person1 = {
+	_name : "Nu",
+	// _name 으로 상용한 이유는 _ 사용으로 해당 비공개 프로퍼티처럼 사용하기 위해
+	// 실제로는 일반 프로퍼티와 같다
+
+	get name(){ // 호출 할때는 이놈을 사용
+		console.log("name 읽는중");
+		return this._name;
+	},
+
+	set name(value){
+	// 저장할때는 이놈을 사용한다
+	// 단. 1개만 사용할수 있다
+		console.log("name의 값을 %s 로 설정하는 중", value);
+		this._name = value;
+	}
+};
+
+person1.name = 'jjsadf';
+//console.log(person1.name);
+*/
+
+/*
+var per = {
+	_name : "nnnn"
+}
+
+Object.defineProperty(per, "name", {
+	get : function(){
+		console.log('name 읽는중');
+		return this._name;
+
+	},
+	set : function(val){
+		console.log("name 을 %s 설정하는 중", val);
+		this._name = val;
+	},
+	enumerable : true, // for in 으로 열거 가능
+	configurable : true // 속성 변경가능
+});
+
+//console.log(per.name);
+//per.name = 'aaaa';
+//console.log("name" in per);
+
+*/
+
+
+var per = {
+	_name : "aaaaaaaaa"
+}
+
+Object.defineProperty(per, "name", {
+	get : function(){
+		console.log("name 읽는 중");
+		return this._naem;
+	}
+});
+
+console.log("name" in per);
+console.log(per.propertyIsEnumerable('name'));
+delete per.name;
+console.log("name" in per);
+
+
+per.name = "kkkkkkkkk";
+
+console.log(per._name);
+// 읽기 전용 속성이 되어 있어 수정이 불가능하다다
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

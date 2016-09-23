@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>부분 추출</title>
+</head>
+<body>
+
+<textarea name="" id="aa" cols="30" rows="10">
+    test test test test 1
+    test 2
+    test 3
+    test 4
+    test asf 5
+    d 6
+    test test test test test test test 7
+</textarea>
+
+<script>
+function c(a){window.console.log(a);}
+window.onload = function() {
+
+    var ta = document.getElementById("aa");
+
+    var lines = ta.value.split("\n");
+
+    var lines2 = [];
+
+    c(lines);
+    console.log(typeof(lines[1]));
+
+    for(var i in lines){
+        c(i);
+        c(lines[i]);
+        /*lines2[i] += a.trim();
+        c(a);
+        c(lines2[i]);
+*/
+    }
+    c(lines2);
+
+
+} /* //inload */
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

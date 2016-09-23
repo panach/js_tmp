@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>btn</title>
+	<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<style>
+	#b1{position:fixed;top:50%;left:50%;}
+	.box{width:50px;height:5000px;border:1px solid red;}
+	
+</style>
+</head>
+<body>
+<a href="#a" id="b1">버튼</a>
+<div class="box"></div>
+
+<script>
+
+$("#b1").on('click', function(e){
+	$(this).state = false;
+	console.log($(this).state);
+
+	if($(this).state){
+		
+		console.log($(this).state);
+		$(this).state = false;
+	}else{
+		
+		console.log($(this).state);
+		$(this).state = true;
+	}
+
+});
+
+
+/*
+
+ $(window).on("mousewheel.disableScroll DOMMouseScroll.disableScroll touchmove.disableScroll", function(e) {
+        e.preventDefault();
+        return;
+    });
+    $(window).on("keydown.disableScroll", function(e) {
+        var eventKeyArray = [32, 33, 34, 35, 36, 37, 38, 39, 40];
+        for (var i = 0; i < eventKeyArray.length; i++) {
+            if (e.keyCode === eventKeyArray [i]) {
+                e.preventDefault();
+                return;
+            }
+        }
+    });
+
+$(window).off(".disableScroll");
+
+
+참조
+http://reiphiel.tistory.com/58
+
+참조
+http://stackoverflow.com/questions/3656592/how-to-programmatically-disable-page-scrolling-with-jquery
+
+*/
+
+
+
+</script>
+</body>
+</html>

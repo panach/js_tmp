@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>프로퍼티3</title>
+</head>
+<body>
+<script>
+/*
+	접근자 프로퍼티 속성
+	get / set
+*/
+
+/*
+var person1 = {
+	_name : "aaaaaaa",
+
+	get name(){
+		console.log("name 읽는중");
+		return this._name;
+	},
+
+	set name(value){
+		console.log("name 값을 %s 로 설정하는중", value);
+		this._name = value;
+	}
+};
+
+console.log(person1.name);
+//get name()
+
+person1.name = "lll";
+// 선언을 실행하면 set name(value) 이부분이 함수처럼 실행된다
+
+// 이 내용을 아래와 같이 Object.defineProperty 를 사용하여 변경할 수 있다
+*/
+
+/*
+var person2 = {};
+Object.defineProperty(person2, "_name", {
+	get : function(){
+		console.log("name 읽는중");
+		return this._name;
+	},
+	set : function(value){
+		console.log("name 값을 %s 로 설정하는중", value);
+		this._name = value;
+	},
+
+	enumerable : true, //열거
+	configurable : true //프로퍼티 변경
+});
+
+console.log(person2._name);
+// 문제 다중 실행으로 브라우저 셧다운 원인 분석필요
+// 2015-10-08 : 원인분석
+//console.log(person2._name); 실행을하게 되면
+// get : function(){ 실행되는대 내부 내용에 this._name; 이 녀석을 return 한다 문제는 리턴한 this._name 이 다시
+// get : function(){ 을 실행하게 되어 무한 루프에 빠진다.
+
+*/
+
+/*
+
+var person3 = {
+	name : "vb"
+};
+
+Object.defineProperty(person3, "name", {
+	get : function(){
+		console.log("get 하는중");
+		return this.name;
+	}
+});
+*/
+
+
+</script>
+</body>
+</html>

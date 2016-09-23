@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>spinbox</title>
+	<script type="text/javascript" src="../jquery-1.11.2.min.js"></script>
+	<style>
+		div{width:400px;height:400px;}
+		#box1{
+			background-color:orange
+		}
+
+	</style>
+</head>
+<body>
+
+<button id="button">눌러</button>
+<div id="box1" class="state1"></div>
+
+
+
+<script>
+jQuery.fn.extend(){
+	log : function(text){
+		var tempTxt = text;
+		tempTxt = String(tempTxt);
+
+		console.log()
+	}
+}
+
+
+window.onload = function(){
+
+
+	$("#button").bind("click", function(){
+		console.log("test");
+	})
+
+
+}
+
+
+
+
+
+
+;( function( $, window, document, undefined )
+{
+	var s = document.body || document.documentElement, // 둘중 하나라고 true 이면 true 를 반환한다
+		s = s.style, // 모든 스타일을 가져온다
+		prefixAnimation = '', //빈값의 이름
+		prefixTransition = ''; //빈값의 이름 2
+
+	console.log(s);
+	console.log(s.style);
+
+	if( s.WebkitAnimation == '' )	prefixAnimation	 = '-webkit-';
+	if( s.MozAnimation == '' )		prefixAnimation	 = '-moz-';
+	if( s.OAnimation == '' )		prefixAnimation	 = '-o-';
+
+	if( s.WebkitTransition == '' )	prefixTransition = '-webkit-';
+	if( s.MozTransition == '' )		prefixTransition = '-moz-';
+	if( s.OTransition == '' )		prefixTransition = '-o-';
+
+	$.fn.extend(
+	{
+		onCSSAnimationEnd: function( callback )
+		{
+			var $this = $( this ).eq( 0 );
+			$this.one( 'webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', callback );
+			if( ( prefixAnimation == '' && !( 'animation' in s ) ) || $this.css( prefixAnimation + 'animation-duration' ) == '0s' ) callback();
+			return this;
+		},
+		onCSSTransitionEnd: function( callback )
+		{
+			var $this = $( this ).eq( 0 );
+			$this.one( 'webkitTransitionEnd mozTransitionEnd oTransitionEnd otransitionend transitionend', callback );
+			if( ( prefixTransition == '' && !( 'transition' in s ) ) || $this.css( prefixTransition + 'transition-duration' ) == '0s' ) callback();
+			return this;
+		}
+	});
+})( jQuery, window, document );
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>여러줄 말줄임</title>
+<style>
+	.ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.ellipsis.multiline {
+	white-space: normal;
+}
+</style>
+</head>
+<body>
+
+<h1>여러줄 말줄임</h1>
+<p>
+
+</p>
+
+
+
+<div class="ellipsis" style="width: 100px; border: 1px solid black;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
+<div class="ellipsis multiline" style="width: 100px; height: 50px; border: 1px solid black; margin-bottom: 100px">Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
+
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="tmp.js"></script>
+<script type="text/javascript">
+$(".ellipsis").ellipsis();
+</script>
+</body>
+</html>

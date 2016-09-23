@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>tab</title>
+<style>
+	body{font-size:12px}
+	.blind{font-size:0;line-height:0;color:transparent}
+	.tab_btn,.tab_con{clear:both;width:200px;}
+	.tab_btn a{float:left;display:inline-block;*display:inline;width:100px;height:25px;background-color:lightgray;text-align:center;line-height:25px;*zoom:1}
+	.tab_btn .on{background-color:aquamarine}
+	.tab_con .con{display:none;width:198px;height:300px;border:1px solid lightgray}
+	.tab_con div.on{display:block}
+</style>
+</head>
+<body>
+
+<h1>탭 메뉴 만들기</h1>
+<p>
+	탭 메뉴를 선택시 하단의 내용이 교체된다 <br>
+	버튼과 내용 영역은 분리되어 있다.
+</p>
+
+<div class="tab_btn">
+	<h2 class="blind">내용 리스트</h2>
+	<a href="#" class="btn_tab on">버튼1</a>
+	<a href="#" class="btn_tab2">버튼2</a>
+</div>
+
+<div class="tab_con">
+	<h2 class="blind">내용 목록</h2>
+	<div class="a1 con on">첫번째 내용</div>
+	<div class="a2 con">두번째 내용</div>
+</div>
+
+
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="tmp.js"></script>
+</body>
+</html>

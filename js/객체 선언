@@ -1,0 +1,17 @@
+var a = {
+	name : "test",
+	age : 18
+}
+
+console.log(a.name);
+console.log(a);
+
+a.go = "gg";
+
+console.log(a.go);
+
+
+delete(a.go)
+
+console.log(a);
+

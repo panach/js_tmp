@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>다중다운로드</title>
+	<script src="../jquery-1.11.2.min.js"></script>
+</head>
+<body>
+<a href="#" class="btn_download">cccccccccccccccccc</a>
+<script>
+	function MSdown(files){
+		if(files.length == 0) return;
+		file = files.pop();
+		var theAnchor = $('<a />')
+			.attr('href', file[0])
+			.attr('download', file[1])
+			.appendTo('body');
+
+		theAnchor[0].click();
+		theAnchor.remove();
+		MSdown(files);
+	}
+
+	$('.btn_download').on('click',function(){
+		MSdown([
+			/*['file1.csv', 'data:text/csv;charset=utf8,'+ encodeURIComponent('my,csv,file\and,so,on')],
+			['file3.js', 'data:text/javascriptcharset=utf8,'+ encodeURIComponent('alert(\'You can donate me your house if you like this script :-) \')')]*/
+			['file1.txt', 'data:text/plain;charset=utf8,'+ encodeURIComponent('this script can do what I need.')],
+			['file2.txt', 'data:text/plain;charset=utf8,'+ encodeURIComponent('this script can do what I need.')]
+		]);
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>attr/prop</title>
+    <script src="jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    
+    
+    <!--  --
+    <a id="a_id" href="#test">Hello</a>
+    
+    
+    
+    
+    <script>
+        window.onload = function() {
+            
+            var $aId = $('#a_id');
+            
+            console.log( $aId.attr('href') );
+            console.log( $aId.prop('href') );
+            
+            
+        }
+    </script>
+    <!--  -->
+    
+    
+    <!--  --
+    <input type="checkbox" id="c_h" >
+    
+    
+    <script>
+        window.onload = function() {
+            
+            var $c_h = $('#c_h');
+
+            console.log( $c_h.attr('checked') );
+            console.log( $c_h.prop('checked') );
+        }
+    </script>
+    <!--  -->
+    
+    
+    <!--  --
+    <input type="checkbox" id="c_h" checked="">
+    
+    
+    <script>
+        window.onload = function() {
+            
+            var $c_h = $('#c_h');
+            
+            $c_h.on('click', function(){
+                console.log( $c_h.attr('checked') );
+                console.log( $c_h.prop('checked') );
+            });
+        }
+    </script>
+    <!--  -->
+    
+    
+    
+    
+    <!-- 1차 생성 : 리셋 없는 경우 --
+    <select id="select_id">
+        <option >한국</option>
+        <option selected="selected">영어</option>
+        <option >일어</option>
+    </select>
+    
+    <script>
+        window.onload = function() {
+            var sel_arr = []; // 배열을 담을 변수 생성
+            
+            $('#select_id option').each(function() { // each 를 사용하여 option 갯수만큼 아래 내용을 실행
+                
+                sel_arr.push(this.label);
+                // sel_arr 에 맨뒤에삽입(push) 한다 뭐를?  option(this) 의 텍스트 (label)를
+                
+            });
+            
+            
+            $('#select_id').on('change', function() { // 셀렉트 박스가 선택 되어 값이 변경된다면 이벤트 실행!
+                // sel_list 선택된 option 의 값을 저장한다
+                var sel_list = $('#select_id option:selected').val();
+                // var a = sel_arr.find('한국').index();
+                
+                // 선택된 option 이 무엇인지에 따라 하는 행동을 다르게 주었다.
+                // 예제이니  실행하는 내용은 간소화 하여 attr 로 selected 를 제어 하는것으로 만들었다
+                if(sel_list == "한국") {
+                    $('#select_id option').eq(0).attr('selected','selected');
+                } else if(sel_list == "영어"){
+                    $('#select_id option').eq(1).attr('selected','selected');
+                } else if(sel_list == "일어"){
+                    $('#select_id option').eq(2).attr('selected','selected');
+                }
+            })
+        }
+    
+    </script>
+    <!--  -->
+    
+    
+    <!-- 2차 생성 : 리셋 추가 --
+    <select id="select_id">
+        <option >한국</option>
+        <option selected="selected">영어</option>
+        <option >일어</option>
+    </select>
+    
+    <script>
+        window.onload = function() {
+            var sel_arr = [];
+            
+            $('#select_id option').each(function() {
+                sel_arr.push(this.label);
+                
+            });
+            
+            
+            $('#select_id').on('change', function() {
+                var sel_list = $('#select_id option:selected').val();
+                
+                $('#select_id option').removeAttr('selected','selected'); // 모든 옵션에 selected 를 삭제 한다
+                
+                if(sel_list == "한국") {
+                    $('#select_id option').eq(0).attr('selected','selected');
+                } else if(sel_list == "영어"){
+                    $('#select_id option').eq(1).attr('selected','selected');
+                } else if(sel_list == "일어"){
+                    $('#select_id option').eq(2).attr('selected','selected');
+                }
+            })
+        }
+    
+    </script>
+    <!--  -->
+    
+    
+    
+    <!-- 3차 생성 : prop 으로 변경 --
+    <select id="select_id">
+        <option >한국</option>
+        <option selected="selected">영어</option>
+        <option >일어</option>
+    </select>
+    
+    <script>
+        window.onload = function() {
+            var sel_arr = [];
+            
+            $('#select_id option').each(function() {
+                sel_arr.push(this.label);
+                
+            });
+            
+            
+            $('#select_id').on('change', function() {
+                var sel_list = $('#select_id option:selected').val();
+                
+                
+                $('#select_id option').prop('selected', false); // prop 에서 속성값을 false/ture 로 제어한다
+                
+                if(sel_list == "한국") {
+                    $('#select_id option').eq(0).prop('selected', true);
+                    
+                } else if(sel_list == "영어"){
+                    $('#select_id option').eq(1).prop('selected', true);
+                    
+                } else if(sel_list == "일어"){
+                    $('#select_id option').eq(2).prop('selected', true);
+                }
+                
+                console.log('한국 selected 상태 : ', $('#select_id option').eq(0).prop('selected'));
+                console.log('영어 selected 상태 : ', $('#select_id option').eq(1).prop('selected'));
+                console.log('일어 selected 상태 : ', $('#select_id option').eq(2).prop('selected'));
+            })
+        }
+    
+    </script>
+    <!--  -->
+    
+</body>
+</html>

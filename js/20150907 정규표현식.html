@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>정규표현식</title>
+</head>
+<body>
+3 자리스 쉼표 찍기
+
+<script>
+
+
+	function setComma(n){
+
+		var reg = /(^[+-]?\d+)(\d{3})/;
+		n += '';
+		while(reg.test(n)){
+			n = n.replace(reg, '$1' +','+'$2');
+			console.log(n);
+		}
+		return n
+	}
+
+	console.log(setComma(-200000000000000));
+
+</script>
+</body>
+</html>

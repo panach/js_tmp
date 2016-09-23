@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.11.2.min.js"></script>
+	<style>
+		.on{font-weight:bold;color:red;}
+		.on a{font-weight:bold;color:red;}
+	</style>
+</head>
+<body>
+<div class="cs_whiteday">
+	<div class="wtab">
+		<ul>
+		<li class="on"><a href="#">1버튼</a></li>
+		<li><a href="#">2버튼</a></li>
+		<li><a href="#">3버튼</a></li>
+		<li><a href="#">4버튼</a></li>
+		</ul>
+		<!-- 활성화 탭명 기재 -->
+	</div>
+	<div class="box">
+		<div class="on">1번 박스</div>
+		<div>2번 박스</div>
+		<div>3번 박스</div>
+		<div>4번 박스</div>
+	</div>
+</div>
+<p>버튼을 클릭하면 하단의 박스의 글자에 class 가 추가 되어 색상이 red 로변경</p>
+<script>
+
+	var tempIndex = 1;
+
+	/* 초기화 */
+	function tabReset(){
+		$('.wtab li').removeClass('on'), //모든 버튼의 on 제거
+		$('.box div').removeClass('on'); //모든 상자의 on 제거
+	}
+
+	$('.wtab a').on('click',function(){
+		tempIndex = $(this).parent().index(); // a 태그의 부모요소의 인덱스 저장
+		tabReset(); // 초기화 호출
+		$('.wtab li').eq(tempIndex).addClass('on'); //선택된 버튼에 클래스 추가
+		$('.box div').eq(tempIndex).addClass('on'); //선택된 상자에 클래스 추가
+		/*$('.box div').eq(tempIndex).css('display','none')*/
+
+	});
+</script>
+</body>
+</html>

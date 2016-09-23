@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+html, body{height:100%;margin:0;padding:0}
+body{background-color:#48494b}
+ul{list-style-type:none}
+
+/* 돈통 */
+header{display:flex;width:100%;height:80px;-webkit-flex-wrap:nowrap;-moz-flex-wrap: nowrap;-ms-flex-wrap: nowrap;-o-flex-wrap: nowrap;flex-wrap: nowrap;justify-content:center;cursor:pointer}
+header div{position:relative;width:200px;height:100%;font-size:30px;font-weight:bold;color:#9fa3a6}
+header #wallet{text-align:right}
+header #hand{text-align:left}
+header #wallet:after{content:"";position:absolute;top:0;right:0;width:0;height:100%;border-right:2px solid #fff;transform:rotate(24deg)}
+header #wallet:before{content:"지갑";position:absolute;bottom:0;right:30px;font-size:18px}
+header #hand:before{content:"손";position:absolute;top:0;left:30px;font-size:18px}
+header div span{position:absolute;color:#f0f1f3}
+header #wallet span{right:30px;top:0}
+header #hand span{left:30px;bottom:0}
+
+#vending_machine{position:relative;width:100%;height:auto;margin:50px 0 0 0;padding-top:100px;background-color:#ECF0F1}
+
+/* 동전 투입구 */
+.coin_slot{position:absolute;top:10px;left:50%;width:80px;height:80px;border-radius:100%;background: -webkit-radial-gradient(center, circle, #f0f0f0, #c0c0c0);font-size:0;color:rgba(0, 0, 0, 0);transform:translateX(-50%)}
+.coin_slot:after{content:"";position:absolute;top:50%;left:50%;width:15%;height:80%;background-color:#090803;transform:translateY(-50%) translateX(-50%)}
+
+/* 반환 */
+.return_btn{position:absolute;top:10px;left:50%;width:80px;height:80px;border-radius:100%;
+background-image: radial-gradient(at center 50%, #fdd3c7 0%, #bb2a00 60%, transparent 60%),radial-gradient(black 60%, transparent 60%),linear-gradient(#ada89c, #fcfbfa);
+background-size:60% 60%,100% 100%,100% 100%;
+background-position:50% 50%,50% 50%,50% 0;
+background-repeat:no-repeat, no-repeat;
+font-size:0;color:rgba(0, 0, 0, 0);
+transform:translateX(-50%)}
+
+.return_btn:before{content:"";}
+
+
+/*.return_btn:before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;border-radius:100%;background:-webkit-linear-gradient(#ada89c, #fcfbfa);}*/
+
+/*
+radial-gradient(top left, rgb(205, 230, 235) 34%, transparent 34%),
+radial-gradient(center, rgb(205, 230, 235) 34%, transparent 34%);
+*/

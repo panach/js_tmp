@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<meta charset="UTF-8">
+	<title>정규표현식 - 1</title>
+</head>
+<body>
+
+
+<script>
+
+
+	/* 프로퍼티 삭제 하는 법*/
+
+	/**
+	var book = {
+		name: "객체지향",
+		year: 2015,
+		month : 3,
+		day : 3
+	};
+
+	console.log("name" in book); // true
+	delete book.name; // 프로퍼티 삭제
+	console.log("name" in book); // false
+	console.log(book.name); //undefined
+	console.log("year" in book); // true
+	/**/
+
+
+
+	/* 열거 하는법 for in */
+
+	/**/
+	var book2 = {
+		name: "객체지향2",
+		year: 2016,
+		month : 4,
+		day : 4,
+		afunc : function (){
+			return 'test - afunc';
+		}
+
+	};
+
+	var aProperty; //임시 저장소
+
+	for (aProperty in book2)
+	{
+		console.log("임시저장된 키값 : " + aProperty); // 값에 접근하지 않아 빠르게 검색할수 있다
+		console.log("값 : "+book2[aProperty]); //임시값에 키가 들어가므로 해당 임시 값을 이용하여 객체를 전부 불러올수 있다
+	}
+	console.log(book2.afunc());
+	console.log(book2.afunc);
+
+	/**/
+
+</script>
+</body>
+</html>

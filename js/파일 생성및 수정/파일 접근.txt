@@ -1,0 +1,154 @@
+[ 선수지식 ]
+
+
+1. ActiveXObject 개체
+
+- 자동화 개체에 대한 참조를 사용하여 반환
+
+- 형식 : var newObject = new ActiveXObject("servername.typename"[,"loaction"]);
+
+servername : 필수적인 요소. 개체를 제공하는 응용프로그램의 이름
+
+typename : 필수적인 요소. 만들 개체의 종류나 클래스
+
+loaction : 생략가능. 개체가 만들어질 네트워크 서버의 이름
+
+2. FileSystemObject 객체
+
+폴더, 파일등 파일 시스템과 관련된 객체 처리하는데 사용하는 객체
+
+2.1 CreateTextFile()
+
+- 새로운 파일을 만들기 위한 함수
+
+- 형식 : (Object)CreateTextFile(filename[,overwrite[,unicode]])
+
+Object : FileSystemObject 또는 Folder개체 이름
+
+filename : 만들 파일 이름
+
+overwrite : 생략가능. 기존 파일을 덮어쓸지 여부(default value : true:덮어씀)
+
+unicode : 생략가능. 파일을 유니코드와 ASCII중 어느 것으로 만들지 여부(default value : false)
+
+(true : 유니코드, false : ASCII)
+
+- 반환값 : TextStream
+
+- 이미 존재하는 filename에 overwrite인수가 false이거나 지정되어 있지 않으면 오류 발생
+
+2.2 OpenTextFile()
+
+- 기존 파일 읽고, 데이터 덧붙이는데 사용
+
+- 형식 : (Object)OpenTextFile(filename[, iomode[, create[, format]]])
+
+filename : 파일 이름
+
+iomode : 입출력모드, 1(읽기), 2(쓰기), 8(이어쓰기)
+
+create : 지정한 filename이 없을 경우 새 파일 만들지 여부(default value : false:생성x)
+
+format : 파일 형식, -2(시스템기본값), -1(유니코드), 0(아스키:default value )
+
+- 반환값 : TextStream
+
+3. TextStream 객체
+
+- 파일을 읽거나, 쓰거나, 추가하는데 사용할 수 있는 개체
+
+- 개개의 파일 내용을 처리하기 위해사용되는 객체
+
+- 속성
+
+AtEndOfLine : 파일 포인터가 줄 끝에 있으면 True 반환 (읽기 전용 파일에서만 사용 가능)
+AtEndOfStream : 파일 포인터가 파일의 끝에 있으면 True 반환(읽기 전용 파일에서만 사용 가능)
+Column : 파일에서 현재 문자의 열번호 반환 1부터시작
+Line : 파일에서 현재 줄번호 반환 1부터 시작
+
+- 함수 
+Close : 닫기
+Read : 읽기
+ReadAll : 전체 내용을 하나의 문자열로 읽기
+ReadLine : 파일에서 문자열로 한줄을 읽기
+
+Skip : 파일을 읽을 때 문자를 건너뛰고 무시하기
+SkipLine : 파일을 읽을 때 다음 줄을 건너뛰고 무시하기
+Write : 쓰기
+WriteLine : 쓰고 새줄 쓰기
+
+WriteBlankLines : 빈줄 만들기
+
+[Source]------------------------------------------------------------------------------------------------
+
+<Html>
+<head>
+<title> ::File I/O </title>
+</head>
+
+<body>
+<script type="text/javascript">
+
+//파일 만드는 함수--------------------------------------------------
+function createFile()
+{
+//text area에 기록된 text를 txt에 저장
+var txt= document.getElementById("txtInput").value;
+
+// FileSystemObject 객체를 생성
+var fileObject = new ActiveXObject("Scripting.FileSystemObject");
+// 파일 생성(이스케이프(\)를 두번씩 넣어줘야 함.)
+fWrite = fileObject.CreateTextFile("C:\\write.txt",true);
+// 파일쓰기
+fWrite.write(txt+"</body></html>");
+// 파일 닫기
+fWrite.close();
+
+document.getElementById("txtInput").innerHTML="저장되었습니다.show File 버튼을 누르면 확인할 수 있습니다.";
+}
+
+//파일 읽어와서 보여주는 함수--------------------------------------------------
+function showFile()
+{ 
+var fileName = "C:\\write.txt";
+var fileObject=new ActiveXObject("Scripting.FileSystemObject");
+
+//파일이 있는지 검사
+
+if (!fileObject.FileExists(fileName)) //파일이 없다면
+{
+alert('만들어진 파일이 없습니다. 파일을 만드신 후 다시 이용하세요');
+}
+else //파일이 있다면..
+{
+var fOpen=fileObject.OpenTextFile(fileName,1);
+document.getElementById("txtOutput").innerHTML="";
+
+//파일 읽어오기
+while(!fOpen.AtEndOfStream)
+{
+document.getElementById("txtOutput").innerHTML+= fOpen.Readline(); 
+}
+fOpen.close();
+} 
+}
+</script>
+
+
+<textarea id="txtInput" name="text" rows="6" cols="40">
+이곳에 글을 입력하세요.
+</textarea>
+<br><br>
+
+
+<input type="button" value="Create File" onclick="createFile()">
+<input type="button" value="show File" onclick="showFile()">
+
+<br><br>
+
+
+<textarea id="txtOutput" name="text" rows="6" cols="40">
+저장된 글을 보기 위한 곳입니다.
+</textarea>
+</body>
+</html>

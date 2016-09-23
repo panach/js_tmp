@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>프로퍼티 종류</title>
+</head>
+<style>
+	html{height:100%}
+	body{position:relative;height:100%;margin:0}
+	p{line-height:200px}
+	input{width:200px;height:30px;font-size:18px}
+	.area{position:absolute;top:50%;left:50%;width:200px;height:200px;margin:-100px 0 0 -100px;background-color:lightslategray;transition:all 0s ease}
+	#dropbox{position:absolute;bottom:0;left:0;width:500px;height:300px;border:1px solid gray}
+</style>
+<body>
+
+좌표 X
+<input type="text" id="ipt">
+좌표 Y
+<input type="text" id="ipt2">
+
+<div id="dropbox"></div>
+
+<div class="area" style="top:500px;left:150px;z-index:0;background-color:blur"></div>
+<div class="area" style="top:500px;left:400px;z-index:0;background-color:gray"></div>
+<div class="area" style="top:500px;left:700px;z-index:0;background-color:red"></div>
+
+
+<script>
+
+//	목표3
+//	다수의 오브젝트에 대해 드래그앤 드롭
+
+// 알고리즘
+//각 오브젝트는 현제상태. 드래그상태, 좌표 등을 각자 가지고 있어야 하며 해당 속성은
+//타겟이 됬을경우에만 수정되어야 한다.
+
+// 다수의 갯수가 각자 움직여야 하므로 움직임에 관하여 함수화해서 불려와야 한다
+// 이미지 드래그 되고 있는중 다른 박스와 겹쳐서 클릭이 실행될 때 상태가 있어야 한다
+// 그게 아니라면 z-index 로 처리 할수 있는가?
+// 엘리먼트의 증가로 class 제어, index 제어 필요
+
+//준비물
+//class 선택
+//index 설정
+// 중첩 클릭되었을때 처리해야 하는
+// index 는 data attribute 로 처리
+
+
+
+
+function getElementsByClassName(node, classname) { //class 를 가지고 엘리먼트 찾기
+	var a = [];
+	var re = new RegExp('(^| )'+classname+'( |$)');
+	var els = node.getElementsByTagName("*");
+	for(var i=0,j=els.length; i<j; i++)
+		if(re.test(els[i].className))a.push(els[i]);
+	return a;
+}
+
+var targetObj = getElementsByClassName(document.body,'area'),
+	tempVal ={
+		thisIndex:null,// 현제선택되어 있는
+		x : 0, // x 좌표
+		y : 0,// Y 좌표
+		z : 0// z-index
+	},
+//	box = targetObj.getBoundingClientRect(),
+	mousePos,
+	objMove ={ // 움직임 정의
+		state : true, // 상태에 따라 어떻게 움직일것인가
+		mt1 : function(){ // 빈값
+		},
+		mt2 : function(){ // 좌표값 = 박스 위치값
+			targetObj[tempVal.thisIndex].style.left = mousePos.x + "px";
+			targetObj[tempVal.thisIndex].style.top = mousePos.y + "px";
+		},
+		motion : function(){ // 실제 실행될
+		}
+//------------------------------------------------------------------
+	},
+	dropBox = {
+		target : document.getElementById('dropbox'),
+		dropBoxVal : {
+			left : dropBox.target.offsetLeft,
+			right : dropBox.target.offsetLeft+dropBox.target.offsetWidth,
+			top : dropBox.target.offsetTop,
+			bottom : dropBox.target.offsetTop+dropBox.target.clientHeight,
+		}
+	};
+
+console.log(dropBox);
+
+for(var i = 0; i < targetObj.length;i++){
+	targetObj[i].setAttribute('data-index',i); // 인덱스를 저장 - 클릭되었을때 데이터 저장할때 key 가 된다
+	targetObj[i].onclick = function(){ // 클릭 되었을때
+		// 실제 할일
+		dragSwitch(this);
+	};
+}
+
+document.onmousemove = mouseMove;// 박스에 마우스 움직임이 발생하면 mouseMove 를 실행
+
+function dragSwitch(a){ // 클릭 되면 움직일 오브젝트에 상태에 다라 고정 /움직일지정의
+	if(objMove.state){
+		objMove.state = false;
+		objMove.motion = objMove.mt2;
+
+		// 현제 데이터 저장 ? 드롭 실패 시 제자리로 돌아와야 하므로
+		tempVal.y = a.style.top;
+		tempVal.x = a.style.left;
+		tempVal.z = tempVal.z+1;
+		tempVal.thisIndex = a.getAttribute('data-index');
+		a.style.zIndex = tempVal.z;
+	}else{
+		objMove.state = true;
+		objMove.motion = objMove.mt1;
+
+
+	}
+};
+
+function mouseMove(ev){ // 마우스 좌표을 이용한 데이터 전송
+	ev = ev || window.event; // or 연산자 두개의 입력 값중 어느하나라도 true 이면 true 를 리턴
+	mousePos = mouseCoords(ev);
+	document.getElementById('ipt').value = mousePos.x;
+	document.getElementById('ipt2').value = mousePos.y;
+	objMove.motion(); // 어떤 함수를 가지고 있던 무조건 실행
+}
+
+function mouseCoords(ev){ //마우스 좌표값 받아오기
+	if(ev.pageX || ev.pageY){
+		return {x:ev.pageX, y:ev.pageY};
+	}
+	return {
+		x:ev.clientX + document.body.scrollLeft - document.body.clientLeft, //페이지 전체에 관한
+		y:ev.clientY + document.body.scrollTop - document.body.clientTop
+	};
+}
+
+
+javascript:(function(){
+	var jsf=document.createElement('SCRIPT');
+	jsf.type='text/javascript';
+	jsf.src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js';
+	document.getElementsByTagName('body')[0].appendChild(jsf);
+	var jsf2=document.createElement('SCRIPT');
+	jsf2.type='text/javascript';
+	jsf2.src='http://dev.ui.hangame.com/svnview/promotion/pm_guide/hilight.js';
+	document.getElementsByTagName('body')[0].appendChild(jsf2);
+})();
+
+
+
+
+
+</script>
+</body>
+</html>

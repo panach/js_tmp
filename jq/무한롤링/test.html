@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>aillis : LINE</title>
+<link rel="stylesheet" type="text/css" href="css/line_camera.css">
+<!-- 임시 js 입니다 삭제 하셔도 됩니다 -->
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/main2.js"></script>
+<style>
+	.bg_area .photo_box li{position:absolute;}
+</style>
+</head>
+<body>
+<div id="wrap" class="ko">
+	<div id="header">
+		<div class="utile_area">
+			<h1 class="logo"><a href="#">LINE</a></h1>
+			<div class="lang_area">
+				<p class="select_btn"><a href="#">한국어</a></p>
+				<div class="select_lst" style="display:block">
+					<ul>
+					<li class="mt0"><a href="#">日本語</a></li>
+					<li class="mt0"><a href="#">한국어</a></li>
+					<li><a href="#">ENGLISH</a></li>
+					<li><a href="#">ENGLISH(US)</a></li>
+					<li><a href="#">中文(繁體)</a></li>
+					<li><a href="#">中文(简体)</a></li>
+					<li><a href="#">ESP(Latinoamérica)</a></li>
+					<li><a href="#">RUSSIA</a></li>
+					<li><a href="#">ภาษาไทย</a></li>
+					<li><a href="#">INDONESIA</a></li>
+					</ul>
+					<span class="round top"></span>
+					<span class="round bot"></span>
+				</div>
+			</div>
+		</div>
+		<div class="spot_area">
+			<dl>
+			<dt>라인 카메라</dt>
+			<dd>사진 한 장으로 누릴 수 있는 모든 즐거움!</dd>
+			</dl>
+			<p class="app_btn">
+				<a href="#" class="iphone">iPhone</a>
+				<a href="#" class="android">Android</a>
+			</p>
+		</div>
+		<div class="bg_area">
+			<div class="lefthand">
+				<div class="photo_box">
+					<ul>
+					<li><img src="img/photo1.png" alt=""></li>
+					<li><img src="img/photo2.png" alt=""></li>
+					<li><img src="img/photo3.png" alt=""></li>
+					</ul>
+					<div class="focus"></div>
+				</div>
+			</div>
+			<div class="righthand"></div>
+		</div>
+	</div>
+	<div id="container">
+		<div id="content">
+			<div class="section v1">
+				<strong>마르고 닳도록 제공되는 무료 아이템!</strong>
+				<p class="txt">귀여운 손낙서, 세련된 드로잉, 위트 있는 캐릭터 등 다양한 스타일의 스티커 세트가 1000개 이상 준비되어 있습니다. <br>하루에 하나씩만 써도 3달 이상 쓸 수 있는 엄청난 양의 무료 프레임과 무료 폰트, 놓치지 마세요! <br>무료 아이템은 앞으로도 쭉~ 업데이트 됩니다. </p>
+				<p class="img"><img src="img/img_section.jpg" width="960" height="480" alt=""></p>
+			</div>
+			<div class="section v10">
+				<strong>나만의 컬러로 즐기는 카메라 앱!</strong>
+				<p class="txt">다양한 컬러의 새로운 스킨으로<br>나만의 카메라 앱으로 꾸며보세요!</p>
+				<p class="img"><img src="img/skincolor.png" width="960" height="500" alt=""></p>
+			</div>
+			<div class="section v2">
+				<p class="img fl"><img src="img/img_section2_v3.jpg" width="550" height="525" alt=""></p>
+				<div class="fl">
+					<strong>특별한 제안,<br>aillis 샵!</strong>
+					<p class="txt">여러분의 사진을 조금 더 스페셜하게 꾸며 줄<br> 특별한 아이템. aillis의 제안을<br> 매주 샵에서 확인하세요!</p>
+				</div>
+			</div>
+			<div class="section v3">
+				<strong>다양하고 품질 좋은 필터!</strong>
+				<p class="txt">여러분이 보고 있는 풍경에 분위기를 더해 줄 필터를 만나보세요. 필터의 디테일한 부분까지 조정할 수 있답니다.</p>
+				<p class="img"><img src="img/img_section3.jpg" height="636" width="960" alt=""></p>
+			</div>
+			<div class="section v4">
+				<div class="fl">
+					<strong>나만의 스티커!</strong>
+					<p class="txt">똑같은 스티커는 가라! 세상에서 오직 하나뿐인<br> 당신만의 스티커를 직접 만들어보세요.<br> 여러분이 직접 그린 그림, 자주 사용하는 문구, <br>사진 중에서 좋아하는 부분만 잘라내서 스티커로<br> 사용할 수 있어요. </p>
+				</div>
+				<p class="img fr"><img src="img/img_section4_v2.jpg" height="500" width="542" alt="">
+			</div>
+			<div class="section v5">
+				<strong>프로필 사진의 필수품! 뷰티~♥</strong>
+				<p class="txt">피부를 환하고 매끈하게! 눈은 또렷하고 초롱초롱하게!  얼굴 라인의 미세한 부분까지 예쁘게 만들 수 있습니다. <br>자연스럽게 훈남훈녀가 되는 마법, 지금 라인 카메라 안에서 만나보세요.</p>
+				<p class="img"><img src="img/img_section5_v2.jpg" height="426" width="640" alt=""></p>
+			</div>
+			<div class="section v6">
+				<p class="img fl"><img src="img/img_section6_v2.jpg" height="500" width="560" alt=""></p>
+				<div class="fl">
+					<strong>여러 장의<br> 사진을 한 장에!<br> 콜라주</strong>
+					<p class="txt">지정된 레이아웃에 여러 장의 사진을 넣거나,<br> 커다란 도화지에 자유롭게 사진을 배치하는<br> 방법으로 여러분만의 콜라주를 만들 수 있습니다.<br> 틀의 두께와 선 및 배경의 색상까지도 자유롭게<br> 꾸며보세요.</p>
+				</div>
+			</div>
+			<div class="section v9">
+				<strong>풀 스크린 촬영·편집 기능!</strong>
+				<p class="txt">풀 스크린으로 화면 사이즈에 맞춰 촬영&amp;편집하여 홈 화면을 꾸며보세요!</p>
+				<div class="bg_sec9"></div>
+			</div>
+			<div class="section v7">
+				<strong>본격 전문 촬영!</strong>
+				<p class="txt">타이머 촬영 및 터치 촬영은 기본! 수평 수직을 정확하게 맞춰서 찍을 수 있도록 지원하는 그리드 표시 및 수평계까지. 전문적인 기능을 만나보세요. </p>
+				<div class="photo_area">
+					<p class="img fl"><img src="img/img_section7_v2.jpg" height="500" width="268" alt=""></p>
+					<ul class="fl">
+					<li>
+						<strong>편리한 타이머 촬영!</strong>
+						<p class="txt">버튼을 누르고 카운트다운이 이어지는 동안<br> 포즈를 취해보세요!</p>
+					</li>
+					<li class="m2">
+						<strong>손쉬운 터치 촬영</strong>
+						<p class="txt">화면 어느 곳을 터치해도 사진을 찍을 수 있답니다.<br> 촬영 버튼을 정확하게 누르기 어려울 때 사용해보세요~</p>
+					</li>
+					<li class="m3">
+						<strong>그리드 표시/수평계 표시</strong>
+						<p class="txt">탁 트인 바다를 정확한 수평에 맞춰 찍고 싶을 때!<br> 라인 카메라를 이용하세요. 수직과 수평은 물론,<br> 그리드 표시를 통한 화면의 전체적인 구도까지<br> 맞출 수 있답니다.</p>
+					</li>
+					</ul>
+				</div>
+			</div>
+			<div class="section v8">
+				<div class="fl">
+					<strong>간편한 공유!</strong>
+					<p class="txt">라인은 물론, 페이스북 및 트위터 등 다양한 <br>SNS에 사진을 간편하게 공유할 수 있어요.</p>
+				</div>
+				<p class="img fr"><img src="img/img_section8_v2.jpg" height="522" width="523" alt=""></p>
+			</div>
+		</div>
+		<div class="app_area">
+			<div class="app_con">
+				<span class="bg_camera2"></span>
+				<strong>라인 공식 카메라 앱</strong>
+				<p class="app_btn">
+					<a href="#" class="iphone">iPhone</a>
+					<a href="#" class="android">Android</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="footer_inner">
+			<ul class="lst_policy">
+			<li><a href="#">이용약관</a></li>
+			<li><a href="#">개인정보취급방침</a></li>
+			<li class="copy"><a href="#">&copy;  LINE Corporation</a></li>
+			</ul>
+			<ul class="lst_sns">
+			<li><a href="#">Facebook Like</a><span>17.4K</span></li>
+			<li><a href="#">Tweet</a><span>17.4K</span></li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>spinbox</title>
+	<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+</head>
+<body>
+<input type="text" id="num" value="200">
+<input type="button" value="up" id="btn_up">
+<input type="button" value="dm" id="btn_dn">
+<script>
+
+window.onload = function(){
+
+	var ipt_num = {
+			name : $("#num"),
+			inputvalue : Number($("#num").val()),
+			input : function(){ // 수정된 값을 val 과 value 에
+				$("#num").val(this.inputvalue);
+				$("#num").attr('value', this.inputvalue);
+			},
+			maxValue : 300, //입력 최대값
+			minValue : 100 // 입력 최소값
+		},
+		btn = {
+			// up/down 버튼 구분
+			up : $("#btn_up"),
+			dn : $("#btn_dn")
+		},
+		mouse = {
+			//
+			updown : "",
+			push : false
+		},
+		// 범위 검사
+		scopeSet = "",
+		// 누르고 있을때 setinterval
+		pushNum = "";
+
+
+	function log(){
+		//console.clear();
+		var result = 0,
+			i = 0,
+			len = arguments.length;
+		while(i < len){
+			console.info(i + " : " + arguments[i]);
+			i++;
+		}
+	}
+
+	//컨트롤 타워
+
+
+	// 단순클릭과  누르고 있는 상태인지 구분
+	function motion(){}
+
+	// 입력된 숫자가 100~300 범위로 조절
+	function scope(){
+		if(ipt_num.inputvalue < ipt_num.minValue){
+			ipt_num.inputvalue = ipt_num.minValue;
+			ipt_num.input();
+		}else if(ipt_num.inputvalue > ipt_num.maxValue){
+			ipt_num.inputvalue = ipt_num.maxValue;
+			ipt_num.input();
+		}
+		clearTimeout(scopeSet);
+	}
+
+
+	// 숫자 업/다운
+	function number(){
+		clearTimeout(scopeSet);
+		// up 버튼 눌렀을때
+		if(mouse.updown === "UP"){
+			ipt_num.inputvalue++; // 값증가
+			mouse.updown = false;
+
+		// down 버튼 눌렀을때
+		}else if(mouse.updown === "DOWN"){
+			ipt_num.inputvalue--;
+			mouse.updown = false;
+
+		// input 의 값만 바꿨을 때
+		}else{
+			var tempA = $("#num").val();
+			ipt_num.inputvalue = Number(tempA);
+			mouse.updown = false;
+		}
+		ipt_num.input(); // 입력/변화된 값을 value/val 에 저장
+		scopeSet = setTimeout(scope, 1000); // 입력된 값이 범위내인지 확인
+	}
+
+	//연속 누르기
+	function push(){
+
+		//연속해서 값을 증가!
+		if(mouse.updown === "UP"){
+			pushNum = setInterval(function(){
+				ipt_num.inputvalue++;
+				ipt_num.input();
+			}, 100);
+			console.log('push - UP');
+			mouse.updown = false;
+		//down 버튼 눌렀을때
+		}else if(mouse.updown === "DOWN"){
+			pushNum = setInterval(function(){
+				ipt_num.inputvalue--;
+				ipt_num.input();
+			}, 100);
+			console.log('push - DOWN');
+			mouse.updown = false;
+		}
+	}
+
+	// 숫자와 텍스트 분리
+	function ipt_val(){
+		/*
+			1. 추출.
+			2. 배열로 저장.
+			3. 텍스트로 합치기
+			4. 숫자형으로 변형
+			5. val 로 저장
+		*/
+	}
+
+	// 리셋
+	function reset(){
+
+	}
+
+
+
+
+
+// 업버튼 mouseup
+btn.up.on('mouseup mouseleave', function(e) {
+	mouse.updown = "UP";
+	mouse.push = false;
+	number();
+	clearInterval(pushNum);
+	console.log("up - mouseup");
+	return false;
+});
+
+// 다운버튼 mouseup
+btn.dn.on('mouseup mouseleave', function(e) {
+	mouse.updown = "DOWN";
+	mouse.push = false;
+	number();
+	clearInterval(pushNum);
+	console.log("dn - mouseup");
+	return false;
+});
+
+
+
+// 업버튼 누르고 있긔
+btn.up.on('mousedown', function(e) {
+	mouse.updown = "UP";
+	mouse.push = true;
+
+	console.log("up - mousedown");
+	pushNum = setTimeout(push, 500);
+	return false;
+});
+
+// 다운버튼 누르고 있긔
+btn.dn.on('mousedown', function(e) {
+	mouse.updown = "DOWN";
+	mouse.push = true;
+	console.log("dn - mousedown");
+	pushNum = setTimeout(push, 500);
+	return false;
+});
+
+
+
+
+
+
+
+//숫자 인풋을 변경했을때
+ipt_num.name.on('keydown', function(){
+	clearTimeout(scopeSet);
+});
+
+ipt_num.name.on('keyup', function(){
+	number();
+});
+
+
+
+
+
+
+
+/*
+ 마우스 다운된 상태로 일정시간(0.5) 지나면 연속해서 1식증가/감소
+ 마우스 단순 클릭 1 증가 감소
+ 숫자는 100~300 사이
+ 마우스가 input 을 떠날시
+ 숫자 문자 입력시 숫자만 남아야한다 100~300 사이로
+
+
+참조
+드래그 관련
+http://threedubmedia.com/code/event/drag
+
+20150611
+setTimeout
+setInterval
+초기화
+누르고 있기 만들것
+*/
+
+
+
+
+//	clearTimeout(this.downTimer);
+//	this.downTimer = setTimeout(function() {
+//
+//	}, 2000);
+
+//	clearTimeout(this.downTimer);
+
+
+
+
+}
+
+</script>
+</body>
+</html>

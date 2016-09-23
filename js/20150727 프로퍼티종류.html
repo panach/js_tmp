@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>프로퍼티 종류</title>
+</head>
+<body>
+<script>
+
+	var peron1 = {
+		name : "aaa"
+	}
+
+	console.log("name" in peron1); // 키값이 있는지 확인하여 true 리턴
+	console.log(peron1.propertyIsEnumerable("name")); //열거 가능한 속성인지 확인 true 리턴
+
+	var pro = object.keys(peron1);
+
+	console.log("length" in pro);
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

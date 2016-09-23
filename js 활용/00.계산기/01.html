@@ -1,0 +1,66 @@
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/02.css">
+    <script>
+      var num1 = "";
+      var num2 = "";
+      var result = "";
+      // 입력폼으로 입력받은 계산할 숫자
+      function inputNum(){
+        num1 = Number(document.getElementById("firstNum").value);
+        num2 = Number(document.getElementById("secondNum").value);
+      }
+      // 덧셈 함수
+      function calPlus(){
+        inputNum();
+        result = num1 + num2;
+        document.getElementById("result_box").innerHTML = "<h2>" + "결과는!!!" + "</h2>" + "<p>" + num1 + "+" + num2 + "=" + result + "</p>"; // 결과를 result_box에 노출
+      }
+      // 뺄셈 함수
+      function calMinus(){
+        inputNum();
+        result = num1 - num2;
+        document.getElementById("result_box").innerHTML = "<h2>" + "결과는!!!" + "</h2>" + "<p>" + num1 + "-" + num2 + "=" +  + result + "</p>"; // 결과를 result_box에 노출
+      }
+      // 곱셈 함수
+      function calMulti(){
+        inputNum();
+        result = num1 * num2;
+        document.getElementById("result_box").innerHTML = "<h2>" + "결과는!!!" + "</h2>" + "<p>" + num1 + "*" + num2 + "=" +  + result + "</p>"; // 결과를 result_box에 노출
+      }
+      // 나눗셈 함수
+      function calDivis(){
+        inputNum();
+        result = num1 / num2;
+        document.getElementById("result_box").innerHTML = "<h2>" + "결과는!!!" + "</h2>" + "<p>" + num1 + "/" + num2 + "=" +  + result + "</p>"; // 결과를 result_box에 노출
+      }
+    </script>
+  </head>
+  <body>
+    <h1>계산기!!!!</h1>
+    <p>계산할 숫자 입력 후, 연산자 버튼을 눌러주세요.</p>
+
+    <div class="calculator_box">
+      <div class="input_area">
+        <div class="input_box">
+          <label for="firstNum">첫 번째 숫자</label>
+          <input type="text" id="firstNum">
+        </div>
+        <div class="input_box">
+          <label for="secondNum">두 번째 숫자</label>
+          <input type="text" id="secondNum">
+        </div>
+      </div>
+
+      <div class="btn_box">
+        <button type="button" onClick="calPlus();" class="plus">덧셈</button>
+        <button type="button" onClick="calMinus();" class="minus">뺄셈</button>
+        <button type="button" onClick="calMulti();" class="multi">곱셈</button>
+        <button type="button" onClick="calDivis();" class="divis">나눗셈</button>
+      </div>
+    </div>
+
+    <div id="result_box"></div>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+    "name": "camden.helloworld",
+    "title": "HelloWorld",
+    "description": "Adds HelloWorld support to Brackets.",
+    "homepage": "https://github.com/cfjedimaster/something real here",
+    "version": "0.0.1",
+    "author": "Raymond Camden <raymondcamden@gmail.com> (http://www.raymondcamden.com)",
+    "license": "MIT",
+    "engines": {
+        "brackets": "<=1.5.0"
+    }
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>프로토타입 복습 2</title>
+</head>
+<body>
+<script>
+
+/* Parttern 1 */
+var namespace = (function(){
+	var namespace = {};
+
+	var i  = 0;
+
+	function func1(){ //내부 함수
+		alert(i);
+	};
+	namespace.func2 = function(){ //외부 노출 함수
+		alert(i);
+	};
+
+	return namespace;
+})();
+
+
+
+/* Parttern 2 권장한다 !!!! */
+var namespace = (function(namespace, $, undefined){
+// $ = jQuery임 전역번수를 지역변수로 전달하면 실행함수내에서 지역변수로 사용
+//하기때문에 탐색작업이 좀더 빨라진다
+	var i  = 0;
+
+	function func1(){ //내부 함수 private
+		alert(i);
+	};
+	namespace.func2 = function(){ //외부 노출 함수 public
+		alert(i);
+	};
+
+	return namespace; //리턴을 해야함
+})(window.namespace || {},jQuery); //객체 없으면 생성
+
+
+
+/* Parttern 3 */
+(function(namespace , $, undefined) {
+		var i  = 0;
+
+	function func1(){ //내부 함수
+		alert(i);
+	};
+	namespace.func2 = function(){ //외부 노출 함수
+		alert(i);
+	};
+})(window.namespace = window.namespace || {}, jQuery);
+
+
+
+
+/* object literal */
+var Swapper = {
+	images: ['1.jpg', '2.jpg', 'sd.gif'],
+	pos: {
+		x: 40,
+		y: 50
+	},
+	onSwap: function() {
+		// code here
+	}
+};
+
+
+// 호풀하는 방법 + 채이닝
+
+// Swapper.images().pos().onSwrap();
+// 위 와 같이 호풀할경우 아래와 같은 효과를 낼수 있다
+// Swapper.iamges();
+// Swapper.pos();
+// Swapper.onSwarp();
+
+</script>
+</body>
+</html>

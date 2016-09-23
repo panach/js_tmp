@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>프로퍼티 종류</title>
+</head>
+<style>
+	p{line-height:200px}
+</style>
+<body>
+<p>
+단순 마우스의 좌표값을 가져옴
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+test <br>
+
+</p>
+<script>
+
+
+
+document.onmousemove = mouseMove;// 문서에 마우스 움직임이 발생하면 mouseMove 를 실행
+function mouseMove(ev){
+	ev           = ev || window.event; // or 연산자 두개의 입력 값중 어느하나라도 true 이면 true 를 리턴
+	var mousePos = mouseCoords(ev);
+	//console.log(mousePos);
+}
+function mouseCoords(ev){
+	if(ev.pageX || ev.pageY){
+		return {x:ev.pageX, y:ev.pageY};
+	}
+
+	return {
+		x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+		y:ev.clientY + document.body.scrollTop - document.body.clientTop
+	};
+	//ev.pageX, ev.pageY : 이벤트 대상 객체에서의 상대적 마우스 좌표 위치를 반환 (ie 만 지원)
+	//ev.layerX : 이벤트 대상 객체에서의 상대적 마우스 좌표 위치를 반환 (ie 만 지원 불가)
+	//ev.clientX : 브라우저 페이지에서의 X 좌표 위치를 반환하나 스크롤 무시하고 해당페이지 상당을 0으로 (글로벌)
+	//ev.screenX : 전체 모니터 스크린에서의 마우스 좌표 위를 반환
+	// scrollleft : 브라우저 밖으로 컨텐츠가 나갔을때
+	//clientLeft : offsetLeft 와 client영역의 좌측과의 거리를 나타내는 속성으로 개체의 border 와 같다
+
+
+}
+
+
+// 참고
+// jquery 의 좌표값 얻는 방식
+/*function fixEvent(event) {
+	if ( !event.target ) {
+		event.target = event.srcElement || document;
+	}
+
+	if ( event.target.nodeType === 3 ) {
+		event.target = event.target.parentNode;
+	}
+
+	if ( event.pageX == null && event.clientX != null ) {
+		var eventDocument = event.target.ownerDocument || document,
+			doc = eventDocument.documentElement,
+			body = eventDocument.body;
+
+		event.pageX = event.clientX + (doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc && doc.clientLeft || body && body.clientLeft || 0);
+		event.pageY = event.clientY + (doc && doc.scrollTop  || body && body.scrollTop  || 0) - (doc && doc.clientTop  || body && body.clientTop  || 0);
+	}
+}*/
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>프로퍼티 종류</title>
+</head>
+<style>
+	html{height:100%}
+	body{position:relative;height:100%;margin:0}
+	p{line-height:200px}
+	input{width:200px;height:30px;font-size:18px}
+	#area{position:absolute;top:50%;left:50%;width:200px;height:200px;margin:-100px 0 0 -100px;background-color:lightslategray;transition:all 0s ease}
+</style>
+<body>
+
+좌표 X
+<input type="text" id="ipt">
+좌표 Y
+<input type="text" id="ipt2">
+
+
+<div id="area"></div>
+
+
+<script>
+
+
+/*//	목표
+//	마우스 좌표에 다라 오브젝트가 따라 다닌다
+
+
+var targetObj = document.getElementById("area"),
+	box = targetObj.getBoundingClientRect();
+
+document.onmousemove = mouseMove;// 박스에 마우스 움직임이 발생하면 mouseMove 를 실행
+
+
+function mouseMove(ev){
+	ev           = ev || window.event; // or 연산자 두개의 입력 값중 어느하나라도 true 이면 true 를 리턴
+	var mousePos = mouseCoords(ev);
+
+	document.getElementById('ipt').value = mousePos.x;
+	document.getElementById('ipt2').value = mousePos.y;
+
+//	 움직일 박스의 속성 수정
+//	targetObj.style.marginTop = 0;
+//	targetObj.style.marginLeft = 0;
+	targetObj.style.left = mousePos.x + "px";
+	targetObj.style.top = mousePos.y + "px";
+
+}
+
+function mouseCoords(ev){
+	if(ev.pageX || ev.pageY){
+		return {x:ev.pageX, y:ev.pageY};
+	}
+	return {
+		x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+		y:ev.clientY + document.body.scrollTop - document.body.clientTop
+	};
+}*/
+
+
+//	목표2
+//	클릭시!
+//	마우스 좌표에 다라 오브젝트가 따라 다닌다
+//	추가 클릭시 해당 좌표에 고정
+
+var targetObj = document.getElementById("area"),
+	box = targetObj.getBoundingClientRect(),
+	mousePos,
+	objMove ={ // 움직임 정의
+		state : true, // 상태에 따라 어떻게 움직일것인가
+		mt1 : function(){ // 빈값
+		},
+		mt2 : function(){ // 좌표값 = 박스 위치값
+			targetObj.style.left = mousePos.x + "px";
+			targetObj.style.top = mousePos.y + "px";
+		},
+		motion : function(){ // 실제 실행될
+		}
+
+	};
+
+document.onmousemove = mouseMove;// 박스에 마우스 움직임이 발생하면 mouseMove 를 실행
+
+targetObj.addEventListener("click",function(){ // 클릭 되면 움직일 오브젝트에 상태에 다라 고정 /움직일지정의
+	if(objMove.state){
+		objMove.state = false;
+		objMove.motion = objMove.mt2;
+	}else{
+		objMove.state = true;
+		objMove.motion = objMove.mt1;
+	}
+});
+
+function mouseMove(ev){
+	ev           = ev || window.event; // or 연산자 두개의 입력 값중 어느하나라도 true 이면 true 를 리턴
+	mousePos = mouseCoords(ev);
+	document.getElementById('ipt').value = mousePos.x;
+	document.getElementById('ipt2').value = mousePos.y;
+	objMove.motion(); // 어떤 함수를 가지고 있던 무조건 실행
+}
+
+function mouseCoords(ev){
+	if(ev.pageX || ev.pageY){
+		return {x:ev.pageX, y:ev.pageY};
+	}
+	return {
+		x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+		y:ev.clientY + document.body.scrollTop - document.body.clientTop
+	};
+}
+
+
+
+
+</script>
+</body>
+</html>

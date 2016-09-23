@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>프로토타입 복습</title>
+</head>
+<body>
+<script>
+
+
+/* 복습 1*/
+	var o = {
+		a : 2,
+		m : function(b){
+			return this.a + 1;
+
+		}
+	};
+
+
+	console.log(o.m()); //3
+	// o 를 호출 하게 되면 this 는 o 가 된다
+
+
+	var p = Object.create(o);
+	// p 는  프로토타입을 o 로 가지는 오브젝트다
+	// 이시점에서 p 의 구조는 o 와 동일하다.
+
+	p.a = 12;
+	// p.a 에 12 를 대입한다.
+	// o.a 는 2 이며 p.a 와 다른 값을 가지게 된다.
+
+	console.log('p.a : ' + p.a);
+	console.log('o.a : ' + o.a);
+
+	console.log('p.m() : ' + p.m()); // this 는 p 를 가르킨다
+	console.log('o.m() : ' + o.m()); // this 는 o 를 가르킨다
+
+
+/* 복습 2 */
+console.log('복습 2 --------------------');
+
+	function Graph() {
+		this.vertexes = [];
+		this.edges = [];
+	}
+
+	Graph.prototype = {
+		addVertex : function(v) {
+			this.vertexes.push(v);
+		}
+	};
+
+
+	var g = new Graph();
+
+	console.log(Graph);
+	console.log(g);
+
+/* 복습 2 */
+
+	var a = {a: 1};
+	// a ---> Object.prototype ---> null
+
+	var b = Object.create(a);
+	// b ---> a ---> Object.prototype ---> null
+	console.log(b.a); // 1 (상속됨)
+
+	var c = Object.create(b);
+	// c ---> b ---> a ---> Object.prototype ---> null
+
+	var d = Object.create(null);
+	// d ---> null
+	console.log(d.hasOwnProperty); // undefined이다. 왜냐하면 d는 Object.prototype을 상속받지 않기 때문이다.
+
+
+
+
+
+</script>
+</body>
+</html>

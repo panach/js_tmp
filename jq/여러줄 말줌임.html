@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.11.2.min.js"></script>
+	<style>
+		#fos { width: 200px; height: 190px; overflow: hidden; background-color:silver }
+#fos p { padding: 10px; margin: 0; }
+
+	</style>
+</head>
+<body>
+
+<div id="fos">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nisi ligula, dapibus a volutpat sit amet, mattis et dui. Nunc porttitor accumsan orci id luctus. Phasellus ipsum metus, tincidunt non rhoncus id, dictum a lectus. Nam sed ipsum a lacus sodales eleifend. Vestibulum lorem felis, rhoncus elementum vestibulum eget, dictum ut velit. Nullam venenatis, elit in suscipit imperdiet, orci purus posuere mauris, quis adipiscing ipsum urna ac quam.</p>
+</div>
+
+<script>
+window.onload = function(){
+	var p=$('#fos p');
+	var divh=$('#fos').height();
+	while ($(p).outerHeight()>divh) {
+		$(p).text(function (index, text) {
+			return text.replace(/\W*\s(\S)*$/, '...');
+		});
+	}
+
+}
+</script>
+</body>
+</html>

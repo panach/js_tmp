@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>딤드</title>
+<style>
+	body{font-size:12px}
+	input{margin:20px 0}
+	.btn_active{font-size:18px}
+
+	.dim{position:absolute;top:0;left:0;right:0;bottom:0;
+		background: rgba(0, 0, 0, 0.8);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#90000000,endColorstr=#90000000);
+	}
+	.btn_close{position:absolute;top:50%;left:50%;color:#fff;
+		-webkit-transform:translate(-50%, -50%);
+		-ms-transform:translate(-50%, -50%);
+		-o-transform:translate(-50%, -50%);
+		transform:translate(-50%, -50%)}
+</style>
+</head>
+<body>
+
+<h1>딤드 on/off</h1>
+<p>활성화 버튼을 클릭하면 딤드가 활성화되며 <br>
+	닫기 버튼 클릭시 딤드 비활성화됩니다. <br>
+	단순 display:none/block  제어를 연습하기 좋은 내용입니다.
+</p>
+
+<input type="button" value="활성화" class="btn_active_ipt"> <br>
+<a href="#" class="btn_active">활성화</a>
+
+<p> 위  두 버튼 모두 활성화용 버튼입니다. <br> 어떠한 형태든 이벤트를 실행은 동일하게 진행할 수 있습니다. </p>
+
+<div class="dim" style="display:none">
+	<a href="#" class="btn_close">닫기</a>
+</div>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="tmp.js"></script>
+</body>
+</html>

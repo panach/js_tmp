@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이중포문 break</title>
+</head>
+<body>
+<script type="text/javascript">
+
+// 사망각
+var flag = false;
+
+// 증가되는 값은 2개 dan , i
+// 목표  dan 과 i 곱한 값이 12가 되면 for 문 쪼개기
+
+for( var dan=1; dan<=9; dan++ ){
+// dan 1  부터 9 같으면 끝 / dan 계속증가
+
+    for ( var i=1; i<=9; i++ ){
+
+        // dan 이 한번 즐가 할때 내부 for 는 1부터 9 가지 계속 증가
+
+        console.log("i : " +i);
+
+        // dan 과 i 의 곱이 12가 되면
+        if ( (dan*i) == 12) {
+
+            // 요딴거 한번 찍고
+            console.log(dan + " * " + i + " = " + dan*i );
+
+            // 변수 변화
+            flag = true;
+            // 위 단과 i 의 곱이 12 이면 break
+            break; //안쪽 for문을 끝냄
+        }
+    }
+
+    console.log("dan : " + dan);
+
+    if ( flag ){
+    // 이녀석은 dan 이 증가 할때 마다 한번 씩 사망각을 체크
+    // 내부 for 에서 (line: 28) 변수 변화 시키면 그다음에 break 외부 for 까지 중지
+        break; //바깥쪽 for문을 끝냄
+    }
+}
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.11.2.min.js"></script>
+	<style>
+		#a1{transition:all 1s linear}
+		#a1.a2{color:red;}
+
+	</style>
+</head>
+<body>
+
+<a href="#" id="a1">클릭해!!</a>
+
+<script>
+window.onload = function(){
+	var aaa= 0;
+	$("#a1").click(function(){
+
+		$("#a1").addClass("a2");
+
+		return false;
+	});
+	$("#a1").on("transitionend",function(event){
+		aaa += 1;
+		alert(aaa);
+		event.stopPropagation();
+		event.preventDefault();
+		return false;
+	})
+
+}
+</script>
+</body>
+</html>

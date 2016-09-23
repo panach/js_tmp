@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"></head>
+<body>
+
+    <strong style="font-size:18px">* 숫자를 먼저 넣고 연산을 하시면 됩니다.</strong>
+    <br>
+    <br>
+    <em>(계산된 값은 얼럿창으로 노출됩니다.)</em>
+    <br>
+    <br>
+	<label for="a">첫번째 숫자</label>
+	<input type="text" id="a">
+    <label for="b">두번째 숫자</label>
+	<input type="text" id="b">
+    <input type="button" value="+" onClick="addition()">
+    <input type="button" value="-" onClick="subtraction()">
+    <input type="button" value="*" onClick="multiply()">
+    <input type="button" value="/" onClick="dividing()">
+
+<script>
+var a; // 첫번째 숫자 변수
+var b; // 두번째 숫자 변수
+var c; // 숫자 연산된 변수
+// 숫자 가져오는 함수
+function calculated()
+{
+    a = Number(document.getElementById("a").value); // a value 값을 가져옴 Number를 사용해서 숫자로
+    b = Number(document.getElementById("b").value); // b value 값을 가져옴 Number를 사용해서 숫자로
+}
+// 더하기 함수
+function addition()
+{
+    calculated();
+    c = a+b;
+    alert(c);
+}
+// 빼기 함수
+function subtraction()
+{
+    calculated();
+    c = a-b;
+    alert(c);
+}
+// 곱하기 함수
+function multiply()
+{
+    calculated();
+    c = a*b;
+    alert(c);
+}
+// 나누기 함수
+function dividing()
+{
+    calculated();
+    c = a/b;
+    alert(c);
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>체크박스 추가</title>
+<style>
+	body{font-size:12px}
+	.blind{font-size:0;line-height:0;color:transparent}
+	p{line-height:1.5}
+	.hide{position:absolute;top:0;left:0;width:0;left:0;line-height:0;opacity:0}
+	.ipt_ckb{display:inline-block;margin-bottom:20px;padding-left:15px;background:url(bg_ipt.png) 0 0 no-repeat;line-height:13px;cursor:pointer}
+	.ipt_ckb.active{background-position:0 100%}
+</style>
+</head>
+<body>
+
+<h1>input 체크박스 추가 기능</h1>
+
+<h2>기본형태</h2>
+<p>	기본형태는 이전 예제를 통해 학습한다.</p>
+
+<h2>추가 기능</h2>
+버튼을 클릭하여 체크박스를 모두 선택하게 한다
+
+
+<h3>구조</h3>
+
+<p>
+&lt;input type&#61;"checkbox" id&#61;"ipt_ckb1" class&#61;"hide"&gt;<br>
+&lt;label for&#61;"ipt_ckb1"  class="ipt_ckb active"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;test 텍스트<br>
+&lt;/label&gt;<br>
+</p>
+
+<h3>css 및 js 적용</h3>
+<div class="codeViewBox">
+	<input type="checkbox" id="ipt_ckb1" class="hide" checked>
+	<label for="ipt_ckb1" class="ipt_ckb active">test 텍스트</label><br>
+	<input type="checkbox" id="ipt_ckb2" class="hide">
+	<label for="ipt_ckb2" class="ipt_ckb">test 텍스트</label><br>
+	<input type="checkbox" id="ipt_ckb3" class="hide">
+	<label for="ipt_ckb3" class="ipt_ckb">test 텍스트</label><br>
+	<input type="checkbox" id="ipt_ckb4" class="hide">
+	<label for="ipt_ckb4" class="ipt_ckb">test 텍스트</label><br>
+	<input type="checkbox" id="ipt_ckb5" class="hide">
+	<label for="ipt_ckb5" class="ipt_ckb">test 텍스트</label><br>
+</div>
+<input type="button" value="전체 선택" class="btn_all">
+
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="tmp.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>슬라이드 기본 골격</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+    <h1>설명</h1>
+    <ul>
+        <li>* 엘리먼트에 js 이벤트 속성 사용 금지.</li>
+        <li>* display none block 사용금지</li>
+        <li>* 플러그인 컨닝 금지</li>
+    </ul>
+
+    <h1>선택 / 조건</h1>
+    <dl>
+        <dt>난이도 1.</dt>
+        <dd>단방향</dd>
+        <dd>애니메이션 없음</dd>
+        <dd>버튼 / 인디케이터 기능</dd>
+        <dt>난이도 2.</dt>
+        <dd>애니메이션 있음(a)</dd>
+        <dd>css3 / transition 사용가능</dd>
+        <dd>js / setInterval, clearInterval 사용가능</dd>
+        <dt>난이도 5.</dt>
+        <dd>무한 슬라이드</dd>
+        <dt>난이도 50.</dt>
+        <dd>자동 플레이</dd>
+        <dd>정지 기능</dd>
+        <dt>난이도 100.</dt>
+        <dd>유동형 레이아웃!!!</dd>
+    </dl>
+
+    <div class="slide">
+        <h1 class="blind">슬라이드하다</h1>
+        <div class="slide_indicator">
+            <h2 class="blind">인디케이터</h2>
+            <ul>
+                <!-- [D] 활성화시 active 클래스 추가 -->
+                <li class="active"><a href="#"><span class="blind">1번</span></a></li>
+                <li><a href="#"><span class="blind">2번</span></a></li>
+                <li><a href="#"><span class="blind">3번</span></a></li>
+                <li><a href="#"><span class="blind">4번</span></a></li>
+                <li><a href="#"><span class="blind">5번</span></a></li>
+            </ul>
+        </div>
+
+        <div class="slide_viewbox">
+            <h2 class="blind">내용</h2>
+            <ul>
+                <li>1번 내용</li>
+                <li>2번 내용</li>
+                <li>3번 내용</li>
+                <li>4번 내용</li>
+                <li>5번 내용</li>
+            </ul>
+        </div>
+
+        <div class="slide_btn">
+            <h2 class="blind">이동 버튼</h2>
+            <a href="#" class="btn_prev"><span class="blind">이전보기</span></a>
+            <a href="#" class="btn_next"><span class="blind">다음보기</span></a>
+        </div>
+
+        <div class="slide_autoplay">
+            <h2 class="blind">둠칫둠칫</h2>
+            <a href="#" class="btn_play"><span class="blind">재생</span></a>
+            <a href="#" class="btn_stop"><span class="blind">정지</span></a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

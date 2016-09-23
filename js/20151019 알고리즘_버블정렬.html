@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>알고리즘_버블정렬</title>
+</head>
+<style>
+	.tab{padding-left: 1rem}
+
+</style>
+<body>
+
+<h1>알고리즘</h1>
+	<h2>버블정렬</h2>
+	<h3>목적</h3>
+	<p>배열의 난수를 오른차순으로 정렬한다</p>
+
+	<h3>알고리즘 초안</h3>
+	<ol>
+	<li>배열 정의</li>
+	<li>두수를 비교하는 조건문을 준비한다.</li>
+	<li>배열의 한 인덱스와 다음인덱스를 위 조건문에 넣어 비교한다</li>
+	<li>비교하여 앞인덱스 숫자와 뒤인덱스 숫자의 비교하여 앞인덱스가 더 크면 자리를 교환한다 </li>
+	<li>조건문을 배열의 모든 요소에 "순차적으로" 적용 시키도록 한다</li>
+	<li>위 행동을 다시 한번 배열의 갯수만큼 되풀이 한다</li>
+	<li>반복문 안에 반복문을 사용함으로서 모두 정렬 시킨다</li>
+	</ol>
+
+	<h3>결과</h3>
+	<p>반복문 도중 전부 완료 되어도 획수가 남아 있으면 계속해서 수행한다. <br>
+		이를 막고 좀더 리소스를 줄일수 있는 방법을 찾아보아라</p>
+	<b>jQuery sort 짱.</b>
+
+<script type="text/javascript">
+
+var arr = [5, 8, 6,1, 2, 4, 3, 7, 10,9],
+	tempA = null;
+
+//console.log(arr)
+//console.log('배열 총 길이 : '+arr.length);
+
+
+for(var i=0;i<(arr.length);++i){
+
+//	console.log('----------------------------------------');
+
+	for(var j = 0; j<(arr.length-1);++j){
+
+//		console.log('인덱스 : '+j);
+//		console.log(arr[j]+ ' > '+ arr[j+1]);
+
+		if(arr[j] > arr[j+1]){
+
+//			console.log(true);
+
+			tempA = arr[j];
+			arr[j] = arr[j+1];
+			arr[j+1] = tempA;
+		}
+	}
+
+//	console.log(arr)
+
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>부분 추출</title>
+</head>
+<body>
+
+
+
+<script>
+function c(a){window.console.log(a);}
+window.onload = function() {
+
+    var keywordList = prompt("쉼표로 분리 단어 입력해"),
+        arrayList = keywordList.split(","),
+        resultString = "";
+
+    for(var i in arrayList){
+        resultString += "키워드:" +arrayList[i];
+        c(resultString);
+    }
+
+
+
+
+} /* //inload */
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

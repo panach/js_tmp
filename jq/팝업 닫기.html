@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>btn</title>
+	<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<style>
+	.box{display:none;width:50px;height:50px;border:1px solid red;}
+	.box.open{display:block;}
+</style>
+</head>
+<body>
+<a href="#a" id="b1">버튼</a>
+<div class="box"></div>
+<script>
+
+$("#b1").on('click', function(e){
+
+
+	if($('.box').hasClass("open")){
+		$('.box').removeClass("open");
+		console.log("1");
+	}else{
+		$('.box').addClass("open");
+		console.log("2");
+
+		$(document).on('click', function(){
+			console.log('win_click');
+			$('.box').removeClass("open");
+			$(this).off('click');
+		});
+		e.stopPropagation();
+	}
+
+});
+
+
+
+
+</script>
+</body>
+</html>

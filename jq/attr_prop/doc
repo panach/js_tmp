@@ -1,0 +1,214 @@
+attr()  과  prop() 차이
+
+jquery에서 엘리먼트에 접근하여 속성제어를 하는 방법으로는 attr() 또는  prop() 사용하는것 이다.
+우선 attr 이 무엇인지 모르겠다면 아래 설정을 보자
+
+attr() 엘리먼트 속성을 받아온다.
+prop() DOM 속성을 받아 온다.
+
+엘리먼트 속성과 DOM 속성은 접근 방식이 다르다. 왜냐....제작사에게 따지자.
+
+차이점을 볼수 있는 예제로 바로 넘어가겠다.
+
+
+    <a id="a_id" href="#test">Hello</a>
+
+
+이런 엘리먼트가 위 엘리먼트를 변수에 담자
+
+    var $a_id = $('#a_id');
+
+
+그리고 콘솔로 $aId 의 속성에 접근해 보자
+
+    console.log( $aId.attr('href') );
+    console.log( $aId.prop('href') );
+
+
+$aId.attr('href') -> #test
+$aId.prop('href') -> file//~~#test 또는 http://~~#test 를 리턴해줄것이다
+
+attr 은 html 파일 엘리먼트가 가지고 있는 속성입니다.
+그에 반해 prop의 경우에는 javascript 가 DOM 에 접근하여 취급할수 있는 형태의 값을 가져옵니다.
+좀더 현실적인 예를 하나 들어 보도록 하겠습니다.
+
+
+체크박스가 있습니다
+    <input type="checkbox" id="c_h" checked="checked">
+
+위 체크 박스를 변수에 할당합니다.
+    var $c_h = $('#c_h');
+
+그리고 콘솔로 찍어 보도록 하겠다
+    console.log( $c_h.attr('checked') );
+    console.log( $c_h.prop('checked') );
+
+결과는 아래와 같다
+$c_h.attr('checked') -> checked
+$c_h.prop('checked') -> true
+
+그럼 위 내용에서 이번엔 체크를 해제 하고 다시 콘솔을 확인해보자
+(참고로 체크 해제는 checked="" 이게 아니고 아예 속성 선언 자채를 지워야 한다)
+
+    <input type="checkbox" id="c_h" >
+
+위 처럼 해제!  한번 어떤결과가 나올지 예상!!
+
+
+
+
+$c_h.attr('checked') -> undefined
+$c_h.prop('checked') -> false
+
+예상한 결과가 동일하다면 "자네 개발 한번 해보지 않겠는가?".
+그런대 여기서 한가지 추가로 더 실험을 해보자
+우리는 단순 checked의 속성을 엘리먼트에서 삭제 하는것이 아니라 페이지에서 클릭을 통해 체크가 해제 되었을 경우를 테스트해보자
+
+필요한것은? 이벤트 선언!
+뭘 할때?  체크박스가 클릭되었을때!
+이벤트 발동시 뭘보여준다!?  콘솔로 attr! prop!
+
+    <input type="checkbox" id="c_h" checked="">
+
+    <script src="jquery-1.11.3.min.js"></script>
+    <script>
+        window.onload = function() {
+            
+            var $c_h = $('#c_h');
+            
+            $c_h.on('click', function(){
+                console.log( $c_h.attr('checked') );
+                console.log( $c_h.prop('checked') );
+            });
+        }
+    </script>
+
+
+완성된 코드는 위와 같습니다.
+페이지에 기본적으로 체크된 input이 있습니다.
+그리고 클릭하면 콘솔에 찍히게 되는대 결과는 아래와 같습니다.
+
+(체크가 풀렸을때)
+
+$c_h.attr('checked') -> checked
+$c_h.prop('checked') -> false
+
+분명 이전에 checked 를 엘리먼트에서 삭제했을때는 attr()의 결과는 undefined 였지만 체크 해제 되었을 때는 checked 가 나온다
+
+
+엘리먼트에서 속성을 수동으로 삭제 할 경우
+
+$c_h.attr('checked') -> undefined
+$c_h.prop('checked') -> false
+
+클릭이벤트로 체크를 풀었을 경우
+
+$c_h.attr('checked') -> checked
+$c_h.prop('checked') -> false
+
+속성에 checked 를 넣어 두었을 경우
+
+$c_h.attr('checked') -> checked
+$c_h.prop('checked') -> ture
+
+attr 로는 상태를 전혀 확인 할수 없다!
+마지막으로 select 에서도 이와 비슷한 경우로 인해 오류가 발생한 적이 있어 적어 보겠다
+
+마크업은 아래와 같이 평범한 셀렉트 박스 이며 option 에는 언어가 적혀 있다
+
+    <select id="select_id">
+        <option selected="selected">한국</option>
+        <option >영어</option>
+        <option >일어</option>
+    </select>
+
+js 는 아래와 같이 적습니다.
+
+    var sel_arr = []; // 배열을 담을 변수 생성
+
+    $('#select_id option').each(function() { // each 를 사용하여 option 갯수만큼 아래 내용을 실행
+        
+        sel_arr.push(this.label);
+        // sel_arr 에 맨뒤에삽입(push) 한다 뭐를?  option(this) 의 텍스트 (label)를
+        
+    });
+
+
+    $('#select_id').on('change', function() { // 셀렉트 박스가 선택 되어 값이 변경된다면 이벤트 실행!
+        // sel_list 선택된 option 의 값을 저장한다
+        var sel_list = $('#select_id option:selected').val();
+        // var a = sel_arr.find('한국').index();
+        
+        // 선택된 option 이 무엇인지에 따라 하는 행동을 다르게 주었다.
+        // 예제이니  실행하는 내용은 간소화 하여 attr 로 selected 를 제어 하는것으로 만들었다
+        if(sel_list == "한국") {
+            $('#select_id option').eq(0).attr('selected','selected');
+        } else if(sel_list == "영어"){
+            $('#select_id option').eq(1).attr('selected','selected');
+        } else if(sel_list == "일어"){
+            $('#select_id option').eq(2).attr('selected','selected');
+        }
+    })
+
+하지만 위 예제는 selected 가 추가가 될 뿐 선택 해제 된 option 의 selected 가 지워 지지 않는다. 그래서 removeAttr 을 이용하여 selected 를 삭제해 보도록 하자
+
+
+    $('#select_id').on('change', function() {
+        var sel_list = $('#select_id option:selected').val();
+        
+        $('#select_id option').removeAttr('selected','selected'); // 모든 옵션에 selected 를 삭제 한다
+        
+        if(sel_list == "한국") {
+
+코드는 간단하다
+
+$('#select_id option').removeAttr('selected','selected');
+
+이 코드를 if 전에  삽입하여 모조건 삭제하는것이다.
+자. 여기서 언듯보면 모두 끝난것 같지만 개발이 붙고 나면 문제는 달라진다.
+DB 에서 select 속성을 가져오는경우 전혀 다른 형태의 오류가 뜨게 되는대 마크업에서는 selected 가 지워졌지만 속성값을 무조건 가지게 된다. 눈에 않보이니 이슈를 잡기도 더 어려워 진다.
+개발자 울리지 말고 attr 로 접근하던것을 prop 으로 제어 하게 이런 이슈는 해결 된다.
+단. 엘리먼트에서 select 속성은 변화가 없다 DOM 에서만 변경이 되는것이다!
+
+
+
+    $('#select_id').on('change', function() {
+        var sel_list = $('#select_id option:selected').val();
+        
+        //$('#select_id option').prop('selected', false); // 모든 옵션에 selected 를 삭제 한다
+        
+        // console.log($('#select_id option')[0].prop('selected'));
+        // console.log($('#select_id option')[1].prop('selected'));
+        // console.log($('#select_id option')[2].prop('selected'));
+        
+        $('#select_id option').prop('selected', false);
+        
+        if(sel_list == "한국") {
+            $('#select_id option').eq(0).prop('selected', true);
+            
+        } else if(sel_list == "영어"){
+            $('#select_id option').eq(1).prop('selected', true);
+            
+        } else if(sel_list == "일어"){
+            $('#select_id option').eq(2).prop('selected', true);
+        }
+        
+        console.log('한국 selected 상태 : ', $('#select_id option').eq(0).prop('selected'));
+        console.log('영어 selected 상태 : ', $('#select_id option').eq(1).prop('selected'));
+        console.log('일어 selected 상태 : ', $('#select_id option').eq(2).prop('selected'));
+    })
+
+
+단순 마크업에서 움직이는 것을 제어하는것이라면 attr 은 좋은 선택이다 훨신 리소스도 적게 들기 때문이다. 하지만 개발단과 같이 제어 하고 페이지간 또는 DB 와 연결된 엘리먼트를 제어하는것이라면 prop 을 추천한다.
+
+
+
+
+
+
+
+
+
+
+
+

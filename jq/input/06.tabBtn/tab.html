@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+.blind{visibility:hidden;overflow:hidden;position:absolute;top:0;left:0;width:0;height:0;font-size:0;line-height:0}
+.tab_year{position:absolute;z-index:101;width:100%;height:50px;border-bottom:1px solid #555;background:#666 url(bg_tab_year.png) 0 0 repeat-x}
+.tab_year img:first-child{width:100%;height:auto}
+.tab_year .btn_year_prev,
+.tab_year .btn_year_next{position:absolute;top:0;left:50%;width:6%;height:100%;background:url(btn_tab_year.png) no-repeat;background-size:400% 100%}
+.tab_year .btn_year_prev{margin-left:-15%;background-position:0 0}
+.tab_year .btn_year_next{margin-left:9%;background-position:100% 0}
+.tab_year .btn_year_prev.diactive{background-position:33% 0}
+.tab_year .btn_year_next.diactive{background-position:67% 0}
+
+.tab_year .current_year{position:absolute;top:0;left:50%;width:12%;min-width:auto;height:100%;-webkit-transform:translateX(-50%);-ms-transform: translateX(-50%);-o-transform: translateX(-50%);transform: translateX(-50%)}
+.tab_year .current_year div{display:block;width:100%;height:100%;background:url(t_tab_year_2013.png) 50% no-repeat;-webkit-background-size:100% auto;background-size:100% auto}
+.tab_year .current_year .y2013{background-image:url(t_tab_year_2013.png)}
+.tab_year .current_year .y2014{background-image:url(t_tab_year_2014.png)}
+.tab_year .current_year .y2015{background-image:url(t_tab_year_2015.png)}
+
+</style>
+</head>
+<h1>탭 순환 버튼</h1>
+
+<img src="base.png" alt="">
+
+<p>
+	좌우 버튼을 눌러 가운대 있는 div 를 순자적으로 display: none/block 시킨다 <br>
+	방법으로는 index 를 변수에 담고 해당 변수 기반으로 동작하게 하는것 <br>
+	지금 이해가 안된다고 하더라도 다 방법을 모두 만들어 보면 차이점을 느낄수 있을것이다.
+</p>
+
+
+<h2>Type1</h2>
+<p>
+	현제 block 속성을 가지는 엘리먼트를 찾아 인덱스를 찾고 동작 시킨다
+	자세한 내용은 js 의 주석을 활용하자
+</p>
+
+<h3>구조</h3>
+
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class&#61;"tab_year"&gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class&#61;"current_year"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- [D] display: none/block 으로 제어 가능합니다. --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class&#61;"y2015" style&#61;"display:block"&gt;&lt;span class&#61;"blind"&gt;2015&lt;/span&gt;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class&#61;"y2014" style&#61;"display:none"&gt;&lt;span class&#61;"blind"&gt;2014&lt;/span&gt;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class&#61;"y2013" style&#61;"display:none"&gt;&lt;span class&#61;"blind"&gt;2013&lt;/span&gt;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href&#61;"#" class&#61;"btn_year_prev"&gt;&lt;span class&#61;"blind"&gt;이전 년도 보기&lt;/span&gt;&lt;em class&#61;"blind"&gt;비활성화&lt;/em&gt;&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href&#61;"#" class&#61;"btn_year_next"&gt;&lt;span class&#61;"blind"&gt;다음 년도 보기&lt;/span&gt;&lt;em class&#61;"blind"&gt;비활성화&lt;/em&gt;&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+</p>
+
+<h3>css 및 js 적용</h3>
+<div class="codeViewBox">
+	<div class="tab_year">
+		<div class="current_year">
+
+		<!-- [D] display: none/block 으로 제어 가능합니다. -->
+		<div class="y2015" style="display:block"><span class="blind">2015</span></div>
+		<div class="y2014" style="display:none"><span class="blind">2014</span></div>
+		<div class="y2013" style="display:none"><span class="blind">2013</span></div>
+		</div>
+
+		<a href="#" class="btn_year_prev"><span class="blind">이전 년도 보기</span><em class="blind">비활성화</em></a>
+
+		<a href="#" class="btn_year_next"><span class="blind">다음 년도 보기</span><em class="blind">비활성화</em></a>
+	</div>
+</div> <!-- // codeViewBox -->
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="tmp.js"></script>
+</html>

@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+ul,li{margin:0;padding:0}
+ul{list-style-type: none}
+
+.blind {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+.slide{
+    position: relative;
+    display: block;
+    width: 500px;
+    margin: 0 auto
+}
+.slide_viewbox{
+    overflow: hidden;
+    width: inherit;
+    height: 250px;
+    border: 1px solid gray;
+}
+.slide_viewbox ul{
+    display: block;
+    width: 500%;
+    height: 100%;
+    white-space: nowrap;
+    font-size: 0;
+    line-height: 0;
+}
+.slide_viewbox li{
+    display: inline-block;
+    width: 20%;
+    height: 100%;
+    font-size: 50px;
+    line-height: 250px;
+    text-align: center;
+
+}
+.slide_viewbox li:nth-last-child(1){background-color: lightgreen}
+.slide_viewbox li:nth-last-child(2){background-color: lightblue}
+.slide_viewbox li:nth-last-child(3){background-color: lightgreen}
+.slide_viewbox li:nth-last-child(4){background-color: lightblue}
+.slide_viewbox li:nth-last-child(5){background-color: gray}
+
+.slide_indicator li{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    margin-right:10px;
+    background-color: black;
+}
+.slide_indicator li.active{
+    background-color:red;
+}
+.slide_indicator a{
+    display:block;
+    height: 100%;
+}
+
+.slide_btn a{
+    position:absolute;
+    top: 50%;
+    border-width: 30px;
+    border-style: solid;
+    margin-top: -10px;
+}
+.slide_btn a:after{
+    content: '';
+    position:absolute;
+    top: 50%;
+    border-width: 15px;
+    border-style: solid;
+    margin-top: -15px;
+}
+.btn_prev{
+    left: -80px;
+    border-color: transparent black transparent transparent;
+}
+.btn_prev:after{
+    right: -30px;
+    border-color: transparent #fff transparent transparent;
+}
+.btn_next{
+    right: -80px;
+    border-color: transparent transparent transparent black;
+}
+.btn_next:after{
+    right: 0;
+    border-color: transparent transparent transparent #fff;
+}
+
+.slide_autoplay{
+    position: absolute;
+    bottom: -50px;
+}
+.slide_autoplay .btn_play{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-width: 15px 20px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}
+.slide_autoplay .btn_stop{
+    position: relative;
+    display: inline-block;
+    width: 8px;
+    height: 30px;
+    background-color: gray;
+}
+
+.slide_autoplay .btn_stop:after{
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 30px;
+    background-color: gray;
+    margin-left:10px;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>프로퍼티 종류</title>
+</head>
+<body>
+<script>
+/*
+	프로퍼티 속성 
+	enumerable : false 열거
+	configurable : false 수정
+*/
+	var person1 = {
+			name : "aaa"
+		},
+		person2 = {
+			name : "bbb"
+		};
+
+	console.log(person1.name);
+
+	Object.defineProperty(person1, "name", {enumerable:false});
+
+	//object.defineProperty : 프로퍼티의 속성을 정의 하는 메소드
+	//enumerable : 열거 가능 여부를 정의
+
+	console.log("name" in person1);
+	console.log("name" in person2);
+
+	console.log(person1.propertyIsEnumerable("name"));
+
+	var properties = Object.keys(person1);
+	var properties2 = Object.keys(person2);
+
+	console.log(properties.length);
+	console.log(properties);
+
+	console.log(properties2.length);
+	console.log(properties2);
+
+	Object.defineProperty(person1, "name", {configurable:false});
+	//설정 불가능 속성으로 변경한다
+
+	delete person1.name;
+	// 프로퍼티 제거 시도
+
+	console.log("name" in person1);
+	console.log(person1.name);
+
+	Object.defineProperty(person1, "name", {configurable:true});
+	// 에러를 발생시킨다!
+
+
+
+</script>
+</body>
+</html>

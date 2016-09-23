@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script language="javascript">
+	var hasFileAPI=true;
+	var messageElenent=document.getElementById('message');
+
+	function checkFileAPI(obj, DOMelement, message){
+		if(!obj){
+			hasFileAPI=false;
+			DOMelement.innerHTML =message;
+		}
+	};
+
+	checkFileAPI(window.File,  messageElenent, 'File 객체가 존재하지 않습니다.');
+	checkFileAPI(window.FileList, messageElenent, 'FileList 객체가 존재하지 않습니다.');
+	checkFileAPI(window.FileReader, messageElenent, 'FileReader 객체가 존재하지 않습니다.');
+
+
+	if(!hasFileAPI){
+		messageElenent.innerHTML = '<font color="red">최신 크롬/파폭 브라우저에서 실행 부탁드립니다.</font>';
+	}else{
+		messageElenent.innerHTML = '<font color="blue">FILE API OK</font>';
+
+		document.getElementById("inputFile").onchange=function(){
+			var fileList=this.files;
+			var fileListSize=fileList.length;
+
+			document.getElementById("fileListLength").setAttribute("value", fileListSize);
+
+			var strOption='';
+			for(var i=0; i<fileListSize; i++){
+				var file=fileList[i];
+				var fileName=file.name;
+				var fileLastModifiedDate=file.lastModifiedDate;
+				var fileSize=file.fileSize;
+
+				strOption+='<option>'+fileName+'('+fileSize+' byte) - '+fileLastModifiedDate+'</option>';
+			}
+			document.getElementById("fileList").innerHTML=strOption;
+		};
+	}
+	</script>
+</head>
+<body>
+	 <fieldset>
+		 <legend>INFO</legend>
+		 <div id="message"></div>
+	 </fieldset><br/>
+
+	 <fieldset>
+		 <legend>파일 선택 - 업로드 할 파일을 선택해 주세요.</legend>
+		 <input type="file" id="inputFile" multiple="multiple"/>
+	 </fieldset><br/>
+
+	<fieldset>
+		 <legend>선택 파일 목록</legend>
+		 <label>개수 : </label><input id="fileListLength" name="fileListLength" type="text" disabled="disabled"/><br/>
+		 <select id="fileList" name="fileList" multiple="multiple" size="5"></select>
+	 </fieldset><br/>
+</body>
+</html>

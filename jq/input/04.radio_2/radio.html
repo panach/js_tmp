@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>라디오 type1</title>
+<style>
+	body{font-size:12px}
+	.blind{font-size:0;line-height:0;color:transparent}
+	p{line-height:1.5}
+	.hide{position:absolute;top:0;left:0;width:0;left:0;line-height:0;opacity:0}
+	.ipt_rdo{display:inline-block;margin-bottom:20px;padding-left:15px;background:url(bg_ipt.png) 0 0 no-repeat;line-height:13px;cursor:pointer}
+	.ipt_rdo.active{background-position:0 100%}
+</style>
+</head>
+<body>
+
+<h1>라디오 버튼 만들기2</h1>
+
+<h2>Type2</h2>
+<p>
+	input과 label이 같은 뎁스에 위치할때 사용하는 JS 입니다. <br>
+	input 다음에 label 이 위치 하여 트래킹합니다.<br>
+	구조는 다음과 같이 나열되어 있습니다.
+</p>
+
+<h3>구조</h3>
+
+<p>
+&lt;input type&#61;"radio" name&#61;"ipt" id&#61;"ipt_rdo1" class&#61;"hide"&gt;<br>
+&lt;label for&#61;"ipt_rdo1"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;test 텍스트<br>
+&lt;/label&gt;<br>
+</p>
+
+<h3>css 및 js 적용</h3>
+<div class="codeViewBox">
+	<input type="radio" name="ipt" id="ipt_rdo1" class="hide" checked>
+	<label for="ipt_rdo1" class="ipt_rdo active">test 텍스트</label><br>
+	<input type="radio" name="ipt" id="ipt_rdo2" class="hide">
+	<label for="ipt_rdo2" class="ipt_rdo">test 텍스트</label><br>
+	<input type="radio" name="ipt" id="ipt_rdo3" class="hide">
+	<label for="ipt_rdo3" class="ipt_rdo">test 텍스트</label>
+</div>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="tmp.js"></script>
+</body>
+</html>

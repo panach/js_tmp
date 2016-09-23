@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+	body{font-size:12px}
+	.blind{font-size:0;line-height:0;color:transparent}
+	p{line-height:1.5}
+	.hide{position:absolute;top:0;left:0;width:0;left:0;line-height:0;opacity:0}
+	.ipt_ckb{display:inline-block;margin-bottom:20px;padding-left:15px;background:url(bg_ipt.png) 0 0 no-repeat;line-height:13px;cursor:pointer}
+	.ipt_ckb.active{background-position:0 100%}
+</style>
+</head>
+<body>
+
+<h1>input 체크박스 커스텀 하기</h1>
+
+<h2>기본 형태</h2>
+<p>
+이형태는 for 와 id 를 기반으로 동작합니다.
+그래서 inupt 과 label 의 순서에 관계없이 작동한다
+label 을 클릭하면 배경이 교체되는 기본 형이다. <br>
+input 은 checked  속성이 엘리먼트에 추가/삭제되고  <br>
+label 의 class 가 추가/삭제 된다.
+</p>
+
+
+<h3>구조</h3>
+
+<p>
+&lt;input type&#61;"checkbox" id&#61;"ipt_ckb1" class&#61;"hide"&gt;<br>
+&lt;label for&#61;"ipt_ckb1"  class="ipt_ckb active"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;test 텍스트<br>
+&lt;/label&gt;<br>
+</p>
+
+<h3>css 및 js 적용</h3>
+<div class="codeViewBox">
+	<input type="checkbox" id="ipt_ckb1" class="hide" checked>
+	<label for="ipt_ckb1" class="ipt_ckb active">test 텍스트</label><br>
+	<input type="checkbox" id="ipt_ckb2" class="hide">
+	<label for="ipt_ckb2" class="ipt_ckb">test 텍스트</label><br>
+	<input type="checkbox" id="ipt_ckb3" class="hide">
+	<label for="ipt_ckb3" class="ipt_ckb">test 텍스트</label><br>
+	<input type="checkbox" id="ipt_ckb4" class="hide">
+	<label for="ipt_ckb4" class="ipt_ckb">test 텍스트</label><br>
+	<input type="checkbox" id="ipt_ckb5" class="hide">
+	<label for="ipt_ckb5" class="ipt_ckb">test 텍스트</label><br>
+</div>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="tmp.js"></script>
+</body>
+</html>
