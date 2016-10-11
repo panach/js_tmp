@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* Common */
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0}
+html,body,input,textarea,select,button,table{font-family:'나눔고딕',NanumGothic,'돋움',Dotum,AppleGothic,sans-serif}
+img,fieldset{border:0}
+html, body {height: 100%}
+ul,ol{list-style:none}
+em,address{font-style:normal}
+a{text-decoration:none;}
+a:hover,a:active,a:focus{text-decoration:underline}
+.blind{
+	position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+	font-size: 1px;
+    overflow: hidden;
+	color: transparent;
+}
+.whopper {
+	min-width: 100%;
+	min-height: 100%;
+	white-space: nowrap;
+	line-height: 0;
+	font-size: 0;
+}
+/*
+색상표
+2C3E50
+E74C3C
+ECF0F1
+3498DB
+2980B9
+*/
+nav {
+	display: inline-block;
+	width: 20%;
+	min-height: 100%;
+	vertical-align: top;
+	background-color: #2C3E50;
+}
+nav aside li {
+	margin:0 0  10px 20px;
+}
+nav aside li button{
+	padding: 10px;
+	font-size: 20px;
+	line-height: 1;
+}
+.contain {
+	display: inline-block;
+	width: 80%;
+	min-height: 100%;
+	background-color: #ECF0F1;
+}
+.add_input label {
+	font-size: 12px;
+	line-height: 12px;
+}
