@@ -11,6 +11,7 @@
 *	@ li 계속 추가후에 종료 시점을 체크해야 한다 그시점에서 ul 을 닫는다
 *	@ a 태그 top/left/width/height 등의 속성제어를 어떻게 할것인가
 *		ㄴ 동시에 중앙에서 밀경우에 대비는 어떻게 할것인가
+* ? 1013 텍스트 입력칸의 heading 과 li 가 들여쓰기가 되어야 하는가??
 *	V 버전 관련 -----------------------------------
 */
 
@@ -28,21 +29,21 @@ var tag = {
 		li : ['<li>','</li>'],
 		a : ['<a href="', '" target="', '" title="', '">'] // func 로 변경하럿
 	},
-	input_list = []; // 궁이 필요 한가
+	input_list = []; // 굳이 필요 한가
 
 function new_line(element) {
-	var targetarea = $('.add_input'),
-		// element_text = tag[element][0] + 'test' + tag[element][1];
-		element_label = '<div class="line_' + input_list.length + '"><label for="input_' + input_list.length + '">' + element + '</label> <input type="text" id="input_' + input_list.length + '"> ';
+	var targetarea = $('.add_input'), // 입력 input 이 추가될 영역
+		element_label = '<div class="line_' + input_list.length + '"><label for="input_' + input_list.length + '">' + element + '</label> <input type="text" id="input_' + input_list.length + '"> '; // 입력상자와 label 조합
 	
-	input_list.push(element);
-	// targetarea.append(element_label)
-	targetarea.append(element_label);
-	
-	console.log(input_list);
-	
-}
+	input_list.push(element); // 추가순서
 
+	targetarea.append(element_label); //입력상자에 추가
+	console.log(input_list.length, input_list);
+	new_line.test();
+}
+new_line.test() = function () {
+	console.log('test');
+}
 
 function middle_line() {
 	
