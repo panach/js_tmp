@@ -13,6 +13,16 @@
 *		ㄴ 동시에 중앙에서 밀경우에 대비는 어떻게 할것인가
 * ? 1013 텍스트 입력칸의 heading 과 li 가 들여쓰기가 되어야 하는가??
 *	V 버전 관련 -----------------------------------
+*	 ul 과 li 의 추가에 대해 고민해보자
+*	1. 그냥 li 를 p 나 heading 처럼 추가 하고 out 에서 분리 할것인가
+*	2. 조건문으로 처음부터 ul li 를 구분할 수 있게 만들것인가
+*
+*
+*
+*
+*
+*
+*
 */
 
 
@@ -33,17 +43,39 @@ var tag = {
 
 function add_line(element) {
 	var targetarea = $('.add_input'), // 입력 input 이 추가될 영역
-		element_label = '<div class="line_' + input_list.length + '"><label for="input_' + input_list.length + '">' + element + '</label> <input type="text" id="input_' + input_list.length + '"> '; // 입력상자와 label 조합
+		element_label = '<div class="line_' + input_list.length + '"><label for="input_' + input_list.length + '">' + element + '</label> <input type="text" id="input_' + input_list.length + '"> ', // 입력상자와 label 조합
+		ul_status = false; // 열려있음 : ture , 닫힘 false
 	
-	this.test = function () {
+	this.add_line_li = function () {
 		console.log('test');
 	}
+	
+	
+	
+	if (element == 'li') { // li 일때
+		if (!ul_status) { // ul 열려 있지 않음
+			input_list.push('ul'); // 추가순서
+			ul_status = ture;
+		}
+		targetarea.append(element_label); //입력상자에 추가
+	} else {
+		
+		if (ul_status) { // 열려 있으면 닫기
+			// ul 열려 있지 않음
+			input_list.push('/ul'); // 추가순서
+			ul_status = false;
+		}
+		
+		if ( element == 'a' ) { // 그외
+			
+		} else { // 해딩 + p 에 대한 내용
+			
+		}
+	}
 
-	input_list.push(element); // 추가순서
-
-	targetarea.append(element_label); //입력상자에 추가
+	// input_list.push(element); // 추가순서
+	// targetarea.append(element_label); //입력상자에 추가
 	console.log(input_list.length, input_list);
-	this.test();
 }
 
 function middle_line() {
@@ -60,7 +92,7 @@ $('.add').on('mouseup', function () {
 			break;
 		case 'ul &gt; li': // ul li 관계를 정리하여야 하므로 다른 행동필요
 			console.log('lilili');
-			add_line(li)
+			add_line('li')
 			break;
 		default: // a, li 이외에 무조건 엘리먼트 추가
 			add_line(text);
