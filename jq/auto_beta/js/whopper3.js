@@ -13,14 +13,8 @@
 *		ㄴ 동시에 중앙에서 밀경우에 대비는 어떻게 할것인가
 * ? 1013 텍스트 입력칸의 heading 과 li 가 들여쓰기가 되어야 하는가??
 *	V 버전 관련 -----------------------------------
-*	 ul 과 li 의 추가에 대해 고민해보자
-*	1. 그냥 li 를 p 나 heading 처럼 추가 하고 out 에서 분리 할것인가
-*	2. 조건문으로 처음부터 ul li 를 구분할 수 있게 만들것인가
-*
-*	li 는 들여쓰기가 있어야 한다  클래스 제어를 하려면  element_label을 분해하여 클래스 추가 삭제 할수 있도록 한다
-*
-*
-*
+*	a 테그에 대한 인풋칸  몇개가 필요한가
+*	href / alt / target / 드래그에 필요한 id ? class?
 *
 *
 */
@@ -45,22 +39,26 @@ add_line.ul_status = false; // 열려있음 : ture , 닫힘 false 외부로 뺀�
 
 function add_line(element) {
 	var targetarea = $('.add_input'); // 입력 input 이 추가될 영역
+	var tmpClass = 'line_' + input_list.length; // 기본 클래스명
 
 	this.element_label = function (){
-		var tmpClass = 'line_' + input_list.length; // 기본 클래스명
 		if (element == 'li') { // li 일때 marginleft 이란 클래스 추가
 			tmpClass = 'line_' + input_list.length + ' marginleft';
 		}
 		console.log(input_list.length);
 		return '<div class="' + tmpClass + '"><label for="input_' + input_list.length + '">' + element + '</label> <input type="text" id="input_' + input_list.length + '"> '; // 입력상자와 label 조합
 	};
+	this.element_label2 = function (){
+		console.log('test----');
+	};
+	
 	this.add_line_li = function () {
 		console.log('test');
 	}
 	if (element == 'li') { // li 일때
 		if (!this.ul_status) { // ul 열려 있지 않음
 			input_list.push('ul', 'li'); // 추가순서
-			targetarea.append('<p class="t_list">리스트</p>');
+			targetarea.append('<p class="t_list">ul</p>');
 			this.ul_status = true;
 			// console.log(this.ul_status);
 		}
@@ -74,6 +72,8 @@ function add_line(element) {
 		}
 		
 		if ( element == 'a' ) { // 그외
+			input_list.push('a'); // 추가순서
+			targetarea.append(element_label2); //입력상자에 추가
 			
 		} else { // 해딩 + p 에 대한 내용
 			input_list.push(element); // 추가순서
@@ -96,7 +96,7 @@ $('.add').on('mouseup', function () {
 	switch (text) {
 		case 'a': // a 버튼은 다른 행동 필요
 			console.log('aaaaa');
-			add_line(a);
+			add_line('a');
 			break;
 		case 'ul &gt; li': // ul li 관계를 정리하여야 하므로 다른 행동필요
 			console.log('lilili');
@@ -108,6 +108,23 @@ $('.add').on('mouseup', function () {
 	}
 	// console.log(text);
 });
+
+
+
+
+// 이미지 업로드 참조 코드
+//http://jsfiddle.net/PuneetChawla/vqn7r0nj/
+
+/*
+<input type='file' id='getval' name="background-image" onchange="readURL(event)" /><br/><br/>
+<div id='clock'></div>
+
+function readURL(event){
+var getImagePath = URL.createObjectURL(event.target.files[0]);
+$('#clock').css('background-image', 'url(' + getImagePath + ')');
+}
+*/
+
 
 
 
