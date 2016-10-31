@@ -22,9 +22,14 @@ a:hover,a:active,a:focus{text-decoration:underline}
 	position: relative;
 	min-width: 100%;
 	min-height: 100%;
+	background-color: #f6f6f6;
 	white-space: nowrap;
 	line-height: 0;
 	font-size: 0;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	-webkit-background-size: 100% auto;
+	background-size: 100% auto;
 }
 /*
 색상표
@@ -63,8 +68,6 @@ nav aside li button{
 	margin-left: 20%;
 	width: 80%;
 	min-height: 100%;
-	background-color: #f6f6f6;
-	
 }
 
 .add_input div {
