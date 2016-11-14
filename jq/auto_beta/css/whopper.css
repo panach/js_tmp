@@ -92,3 +92,27 @@ nav aside li button{
 .marginleft {
 	margin-left: 20px;
 }
+.btn_remove_gap ,
+.btn_add_gap {
+	display: inline-block;
+	position: relative;
+	font-size: 1px;
+	color: transparent;
+}
+.btn_remove_gap:before,
+.btn_add_gap:before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	font-size: 13px;
+	text-align: center;
+	color: #000;
+}
+.btn_remove_gap:before {
+	content: "-";
+}
+.btn_add_gap:before {
+	content: "+";
+}

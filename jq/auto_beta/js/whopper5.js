@@ -12,17 +12,23 @@
 *	@ a 태그 top/left/width/height 등의 속성제어를 어떻게 할것인가
 *		ㄴ 동시에 중앙에서 밀경우에 대비는 어떻게 할것인가
 * ? 1013 텍스트 입력칸의 heading 과 li 가 들여쓰기가 되어야 하는가??
+*
+* @ 출력
+* @이미지 + a 기능 구현 필요
+* @ 이미지
+* 	ㄴ 두개 이상 상입
+*		ㄴ 리싸이징 가능여부
 *	V 버전 관련 -----------------------------------
-*	추가 삭제 기능을 어떻게 구현할것인가
-*	중간에 추가/삭제 시  클래스명 indexing 은 어떻게 처리할것인가
-*	input_list 에서는?  ul li 가 쌓인곳은 어떻게 대응할 것인가
-*
-*	=> data- 를 이용할것인가?
-*		! 엘리먼트에 값을 저장할 경우 다른 앨리먼트가 수정되었을때 전체가 index 값이 변경되어야 하므로 리소스 낭비이다
-* => 추가 기능 제작시 추가할 엘리먼트는 어떻게 선택해야 하는가? 계속 자신을 복제하여 추가할것인? 해딩테그는 그런 행동이 필요한기?
-*		! 추가시 엘리먼트를 선택할  셀렉트박스르 보여줄까?
-*
-*	! 일단은 추가 기능은 보류!!
+*		이미지 + a 가 추가 되었을경우.
+*	@ 이미지 추가 이전에 a 가 클릭되었을경우
+*		ㄴ 최초 1회만 바로 이미지 추가 이벤트를 같이 발생 시킨다.
+* @ 이미지가 여러개 삽입될 경우
+*		ㄴ 이미지 영역(부모요소 div) 안에 div 여러개 추가하여 사용
+* @ 이미지가 여러개 삽입될 경우 a 태그는 어떻게 위치할것인가
+*		ㄴ 부모요소 div 에서 relative 를 주고 a 는 position 을 %로 가지고 한다
+* @ 이미지는 width 값이 어떻게 될것인가
+*		ㄴ
+* @ a 태그는 width / height 값이 퍼센트로 적용될것인가
 */
 
 
@@ -50,11 +56,11 @@ function add_line(element) {
 		if (element == 'li') { // li 일때 marginleft 이란 클래스 추가
 			tmpClass = 'line_' + input_list.length + ' marginleft'+ ' element_' + element;
 		}
-		return '<div class="' + tmpClass + '"><label for="input_' + input_list.length + '">' + element + '</label> <input type="text" id="input_' + input_list.length + '"> <button type="button" class="btn_remove_gap">삭제</button><button type="button" class="btn_add_gap">추가</button></div>'; // 입력상자와 label 조합
+		return '<div class="' + tmpClass + '"><label for="input_' + input_list.length + '">' + element + '</label> <input type="text" id="input_' + input_list.length + '"></div>'; // 입력상자와 label 조합
 	};
 	this.element_label2 = function (){
 		var tmpClass = 'line_' + input_list.length + ' element_' + element; // 기본 클래스명
-		return '<div class="' + tmpClass + '"><label for="input_' + input_list.length + '">' + element + '</label> <input type="text" id="input_' + input_list.length + '" placeholder="URL"> <input type="text" placeholder="alt"><select> <option value="_blank" selected="select">_blank</option> <option value="_parent">_parent</option> <option value="_self">_self</option> <option value="_top">_top</option> </select><button type="button" class="btn_remove_gap">삭제</button><button type="button" class="btn_add_gap">추가</button></div>'; // a 태그 관련한 태그추가
+		return '<div class="' + tmpClass + '"><label for="input_' + input_list.length + '">' + element + '</label> <input type="text" id="input_' + input_list.length + '" placeholder="URL"> <input type="text" placeholder="alt"><select> <option value="_blank" selected="select">_blank</option> <option value="_parent">_parent</option> <option value="_self">_self</option> <option value="_top">_top</option> </select></div>'; // a 태그 관련한 태그추가
 	};
 	
 	if (element == 'li') { // li 일때
@@ -82,6 +88,7 @@ function add_line(element) {
 			input_list.push('a'); // 추가순서
 			console.log(input_list.length);
 			targetarea.append(element_label2); //입력상자에 추가
+			
 			
 		} else { // 해딩 + p 에 대한 내용
 			input_list.push(element); // 추가순서
@@ -113,11 +120,4 @@ $('.add').on('mouseup', function () {
 			break;
 	}
 	// console.log(text);
-});
-
-$('.btn_remove_gap').on('click', function (){ // 중간 엘리먼트 삭제
-	console.log('btn_remove_gap');
-});
-$('.btn_add_gap').on('click', function (){ // 중간 엘리먼트추가
-	console.log('btn_add_gap');
 });
