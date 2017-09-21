@@ -1,0 +1,49 @@
+* {
+    border: 1px solid red;
+}
+
+a:not([href]),
+a[href="#"],
+a[href=""],
+a[href*="javascript:void(0)"] {
+  background-color: #00ff30;
+}
+img:not([alt]),
+img[alt=""] {
+  background-color: #00ff30;
+  -webkit-filter: opacity(0);
+  -o-filter: opacity(0);
+  filter: opacity(0);
+}
+html:not([lang]),
+html[lang=""] {
+  background-color: #00ff30;
+}
+input:not([id]),
+select:not([id]),
+textarea:not([id]) {
+  background-color: #00ff30;
+}
+label:not([for]) {
+  background-color: #00ff30;
+}
+input:not([name]),
+select:not([name]),
+textarea:not([name]) {
+  background-color: #00ff30;
+}
+button:empty,
+a:empty {
+  background-color: #00ff30;
+}
+meta[charset]:not([charset="UTF-8"]) {
+  background-color: #00ff30;
+}
+meta[charset="UTF-8"]:not(:first-child) {
+  background-color: #00ff30;
+}
+meta[name="viewport"][content*="user-scalable=no"],
+meta[name="viewport"][content*="maximum-scale"],
+meta[name="viewport"][content*="minimum-scale"] {
+  background-color: #00ff30;
+}

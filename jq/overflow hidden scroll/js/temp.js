@@ -1,5 +1,5 @@
 
-
+// 기본 스크롤은 막고 스크롤 같은 효과를 낸다
 window.onload = function() {
 
 	var sq = {};
@@ -12,7 +12,7 @@ window.onload = function() {
 	else sq.e.attachEvent("onmousewheel", MouseWheelHandler);
 
 	function MouseWheelHandler(e) {
-		// cross-browser wheel delta
+		// 어.....음.....그래 작동하니까 뭐..
 		var e = window.event || e;
 		var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
 

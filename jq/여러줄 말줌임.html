@@ -6,23 +6,44 @@
 	<script src="jquery-1.11.2.min.js"></script>
 	<style>
 		#fos { width: 200px; height: 190px; overflow: hidden; background-color:silver }
-#fos p { padding: 10px; margin: 0; }
-
+		#fos p { padding: 10px; margin: 0; }
 	</style>
 </head>
 <body>
 
 <div id="fos">
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nisi ligula, dapibus a volutpat sit amet, mattis et dui. Nunc porttitor accumsan orci id luctus. Phasellus ipsum metus, tincidunt non rhoncus id, dictum a lectus. Nam sed ipsum a lacus sodales eleifend. Vestibulum lorem felis, rhoncus elementum vestibulum eget, dictum ut velit. Nullam venenatis, elit in suscipit imperdiet, orci purus posuere mauris, quis adipiscing ipsum urna ac quam.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nisi ligula, dapibus a volutpat sit amet, mattis et dui. Nunc porttitor accumsan orci id luctus. Phasellus ipsum metus, tincidunt non rhoncus id, dictum a lectus. Nam sed ipsum a lacus sodales eleifend. Vestibulum lorem felis, rhoncus elementum vestibulum eget, dictum ut velit. Nullam venenatis, elit in suscipit imperdiet, orci purus posuere mauris, quis adipiscing ipsum urna ac quam.</p>
 </div>
 
 <script>
-window.onload = function(){
-	var p=$('#fos p');
-	var divh=$('#fos').height();
-	while ($(p).outerHeight()>divh) {
-		$(p).text(function (index, text) {
-			return text.replace(/\W*\s(\S)*$/, '...');
+/**
+	*** 접근성을 위해 p 가 완전한 상태의 p 를 뒤에 엘리먼트를 복사해 두는것을 생각해보자
+	*** 하지만 이 내용이 전체나 나오는것은 어딘가에는 출력이 될것이다   말줄임이 있다면 사용자에게 말줄임 없는 컨텐츠의 모든 내용이 보여질 곳이 필요하다
+	*
+	* $(p) 는  var p 변수로서 호출된것이다  p.text() 라고 해도 문제는 없지만 아래와 같은 이유로 $() 에 넣었다
+	* 	1) 가독성. 코드해석력 증가   p.text 경우 순간 p 가 뭐에서 선언된 단어인지 판단하기 어렵다. 물론 지금 코드는 짧으니 문제 없
+	* 	2)	$() 에서 사용함으로서  변수에 담긴값이 jquery 에서 선언하여 반한받은 값을 담고 있다고 알려준다
+	* $(p).text(function(index, text))
+	*
+	* 	우선 $(p) 는 $('#fos p') 이 것을 담고 있다 이는 단일한 값이 아닌 다중 선택자이다 p 가 몇개가 될수 있는지 알수 없다 추가될수도 있는일이다.
+	*		.text 는  앞에온 $(p) 의 값이 배열상태로 넘어 오는것을 확인하여 function(index, text) 에게 배열의 index 값과 해당 인덱스가 가지고 있는 text
+	* 	값을 같이 던져주어 실행하도록 한다.
+	*
+	* 정규 표현식
+	*		\W  비 단어 문자에 일치합니다. [^A-Za-z0-9_] 와 동일합니다. 예를 들어, /\W/ 또는 /[^A-Za-z0-9_]/는 "50%."의 '%' 에 일치합니다.
+	*		* 	0회 이상 연속으로 반복되는 앞선 문자에 일치합니다. {0,} 와 동일합니다.
+	*		\s 	스페이스, 탭, 폼피드, 줄 바꿈 문자등을 포함한 하나의 공백 문자에 일치합니다.
+	*		\S 	공백 문자가 아닌 하나의 문자에 일치합니다.
+	*		$ 	입력의 끝을 일치합니다. 만약 다중 선 플래그가 참으로 설정되어 있다면, 줄 바꿈 문자 바로 뒤에도 일치합니다.
+**/
+
+window.onload = function(){ // window 가 onload (로딩) 하면  function 함수를 실행한다
+	var p = $('#fos p'); // 말줄임할 대상을 선택한다
+	var divh = $('#fos').height(); // 말줄임할 대상의 부모요소 (말줄임할 라인수의 기준) 의 높이값을 받아온다
+	
+	while ( $(p).outerHeight() > divh ) { // 내부 자식요소가  부모요소 보다 높이 값이 크면 아래 내용을 실행한다
+		$(p).text(function (index, text) { // 참조 확인
+			return text.replace(/\w*\s(\S)*$/, '...'); // .text 에게 마지막 단어를 말줄임하여  리턴해준다
 		});
 	}
 

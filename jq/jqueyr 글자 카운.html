@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  
+  /* xe 기본 설정 */
+  .xe-form-group {
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .xe-form-control {
+    display: block;
+    width: 100%;
+    height: 35px;
+    padding: 7px 16px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #555555;
+    background-color: #fff;
+    border: 1px solid #dcdde0;
+    border-radius: 2px;
+    box-shadow: none;
+    outline: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  /*필요 추가 설정*/
+  
+  /*기본 형태*/
+  .xe-form-sum {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  .xe-form-sum + .xe-form-control {
+    display: inline-block;
+    width: 95%; /*width는 앞에 텍스트영역이 구체화 하면다면 확실하게 정할수 있을듯합니다 */
+    margin-left: 80px;
+  }
+
+  .xe-form-sum.right {
+    left: auto;
+    right: 0;
+  }
+
+  .xe-form-sum.right + .xe-form-control {
+    width: 95%; /*width는 앞에 텍스트영역이 구체화 하면다면 확실하게 정할수 있을듯합니다 */
+    margin-right: 80px;
+    margin-left: 0;
+  }
+  /* inner 형태 */
+  .xe-form-sum.inner {
+    left: 10px;
+  }
+  .xe-form-sum.inner.right {
+    right: 10px;
+  }
+  .xe-form-sum.inner + .xe-form-control {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    padding-left: 100px;
+  }
+  
+  .xe-form-sum.inner.right {
+    left: auto;
+    right: 10px;
+  }
+  .xe-form-sum.inner.right + .xe-form-control {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    padding-left: 16px;
+    padding-right: 100px;
+  }
+
+  </style>
+</head>
+<body>
+  
+  <h1>기본형태</h1>
+  <div class="xe-form-group">
+    <p class="xe-form-sum">
+      (<span class="num">0</span> / <span>10</span>)
+    </p>
+    <input type="text" class="xe-form-control" id="xe-name" maxlength="10">
+  </div>
+
+  <div class="xe-form-group">
+    <p class="xe-form-sum right">
+      (<span class="num">0</span> / <span>10</span>)
+    </p>
+    <input type="text" class="xe-form-control" id="xe-name" maxlength="10">
+  </div>
+  
+  <h1>inner 형태</h1>
+  <div class="xe-form-group">
+    <p class="xe-form-sum inner">
+      (<span class="num">10</span> / <span>10</span>)
+    </p>
+    <input type="text" class="xe-form-control" id="xe-name" maxlength="10">
+  </div>
+  
+  <div class="xe-form-group">
+    <p class="xe-form-sum inner right">
+      (<span class="num">10</span> / <span>10</span>)
+    </p>
+    <input type="text" class="xe-form-control" id="xe-name" maxlength="10">
+  </div>
+  
+  
+  
+  <p>아직 개발 입히기 전임</p>
+  <!-- 글자 카운팅
+  http://pioul.fr/ext/jquery-maxlength/jquery.maxlength.min.js
+  http://jsfiddle.net/pioul/ysC7L/ -->
+
+  
+</body>
+</html>

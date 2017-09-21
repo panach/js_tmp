@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SVG 챠트 _ 원 타입</title>
+  <link rel="stylesheet" href="css.css">
+</head>
+<body>
+  <div class="buttons"></div>
+  <div class="pie-section">
+    <div class="pie-article plugin-num">
+      <svg class="chart">
+        <circle r="80" cx="85" cy="85" class="back" style="stroke-dasharray: 596 596;"></circle>
+        <circle r="80" cx="85" cy="85" class="pie" data-charge="7" data-free="3" style="stroke-dasharray: 0 596;"></circle>
+      </svg>
+      <div class="pie-text-center">
+        <p>플러그인 개수</p>
+        <span>10</span>
+      </div>
+      <div class="pie-text-bottom">
+        <span class="xe-sr-only" style="display:none">세부내역</span>
+        <ul>
+          <li>
+            <span>유료</span>
+            <strong>7</strong>
+          </li>
+          <li>
+            <span>무료</span>
+            <strong>3</strong>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="pie-article sales-num">
+      <svg class="chart">
+        <circle r="80" cx="85" cy="85" class="back" style="stroke-dasharray: 596 596;"></circle>
+        <circle r="80" cx="85" cy="85" class="pie" data-charge="57" data-free="95" style="stroke-dasharray: 0 596;"></circle>
+      </svg>
+      <div class="pie-text-center">
+        <p>플러그인 판매수</p>
+        <span>152</span>
+      </div>
+      <div class="pie-text-bottom">
+        <span class="xe-sr-only" style="display:none">세부내역</span>
+        <ul>
+          <li>
+            <span>유료</span>
+            <strong>57</strong>
+          </li>
+          <li>
+            <span>무료</span>
+            <strong>95</strong>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <script src="js.js"></script>
+</body>
+</html>

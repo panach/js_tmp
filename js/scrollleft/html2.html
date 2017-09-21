@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>scroll left</title>
+  <style>
+    .outside {
+      position: relative;
+      overflow-x: auto;
+      width: 100%;
+      background-color: #00bcd4;
+    }
+    .outside::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 1000px;
+      bottom: 0;
+      width: 2px;
+      background-color: red;
+      
+    }
+    .inside {
+      display: inline-block;
+      padding: 0 1300px 0 1000px;
+      white-space: nowrap;
+    }
+    .inside li {
+      display: inline-block;
+      background-color: gray;
+    }
+    .inside a {
+      display: block;
+      height: 100%;
+      padding: 20px;
+    }
+    
+  
+  </style>
+</head>
+<body>
+  <div class="outside">
+    <ul class="inside">
+      <li><a href="#">1번 테스트 테스트</a></li>
+      <li><a href="#">2번 테</a></li>
+      <li><a href="#">3번 테스트 테</a></li>
+      <li><a href="#">4번 테스트 테스트</a></li>
+      <li><a href="#">5번 테스트</a></li>
+      <li><a href="#">1번 테스트 테스트</a></li>
+      <li><a href="#">2번 테</a></li>
+      <li><a href="#">3번 테스트 테</a></li>
+      <li><a href="#">4번 테스트 테스트</a></li>
+      <li><a href="#">5번 테스트</a></li>
+    </ul>
+  </div>
+  
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script>
+  function left_scroll(ele_index, ele_offset, ele_width) {
+    var default_pos = 1000, // .outside::before 의 left
+        local_pos = $('.outside').scrollLeft(), // 지금 스크롤의 위치
+        move_pos = (ele_offset.left + ( ele_width / 2 )) - default_pos; // 목표인 스크롤 값
+
+    // 지금 위치를 기준으로 어느 방향으로 갈지 판단
+    // $('.outside').scrollLeft( local_pos + move_pos);
+    $('.outside').stop().animate({ // animate 로 변경
+      scrollLeft : local_pos + move_pos
+    }, 200);
+  }
+  
+  $('.inside a').on('click', function(){
+    var ele = $(this).parent(),  // 클릭한 대상의 부모요소
+    ele_offset = ele.offset(), // 위치값을 가져오기 위해 offset 저장
+    ele_width = ele.outerWidth(), // width/2 에 필요한 width 값 저장
+    ele_index = ele.index(); // 버전업에 사용할수 있어 index 값 저장
+    
+    left_scroll(ele_index, ele_offset, ele_width);
+  });
+
+
+</script>
+</body>
+</html>

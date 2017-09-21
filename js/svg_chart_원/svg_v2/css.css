@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+
+body, html {
+  height: 100%;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+.pie-article {
+  position: relative;
+  width: 212px;
+  display: inline-block;
+}
+.sales-num {
+  margin-left: 39px;
+}
+.pie-article svg {
+  width: 170px;
+  height: 170px;
+  margin: 0 auto;
+  transform: rotate(-90deg);
+  background: transparent;
+  border-radius: 50%;
+  display: block;
+  overflow: hidden;
+}
+.pie-article circle {
+  fill: transparent;
+  stroke-width: 10;
+  stroke-dasharray: 0, 596;
+  transition: stroke-dasharray .4s ease-in;
+}
+.plugin-num .back { stroke: #54c3ff }
+.plugin-num .pie { stroke: #5b69ee }
+.sales-num .back { stroke: #892fd4 }
+.sales-num .pie { stroke: #ed5aeb }
+
+.pie-text-center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.pie-text-center span {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  font-size: 25px;
+  color: #2c2e37;
+  font-weight: bold;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.pie-text-center p {
+  margin: 88px 0 0 ;
+  font-size: 16px;
+  color: #696e7a;
+  
+}
+.pie-text-bottom {
+  margin-top: 18px;
+}
+.pie-text-bottom ul{
+  margin: 0 0 0 0;
+  padding: 0;
+  text-align: center;
+}
+.pie-text-bottom li {
+  display: inline-block;
+  font-size: 16px;
+}
+.pie-text-bottom li + li {
+  margin-left: 10px;
+}
+.pie-text-bottom li::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 100%;
+  vertical-align: -5px;
+}
+.pie-text-bottom li span {
+  color: #696e7a;
+}
+.pie-text-bottom li strong {
+  margin-left: -3px;
+  color: #2c2e37;
+}
+.plugin-num .pie-text-bottom li:nth-of-type(1)::before { border-color: #5b69ee }
+.plugin-num .pie-text-bottom li:nth-of-type(2)::before { border-color: #54c3ff }
+.sales-num .pie-text-bottom li:nth-of-type(1)::before { border-color: #ed5aeb }
+.sales-num .pie-text-bottom li:nth-of-type(2)::before { border-color: #892fd4 }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  
+    .menu:nth-of-type(1) {
+      height: 400px;
+      background-color: gray;
+    }
+    .menu:nth-of-type(2) {
+      height: 200px;
+      background-color: black;
+    }
+    .alarm_bar {
+      height: 50px;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="menu"></div>
+  <div class="menu"></div>
+  <div class="alarm_bar"></div>
+
+  
+  <script src="../jquery-3.1.0.min.js" charset="utf-8"></script>
+  <script>
+  
+  function ui_resize(a) {  
+    var win_h = $(window).height(),
+        alarm_dis = $('.alarm_bar').css('display'),
+        // alarm_h = function () {
+        //   if(alarm_dis == 'block') {
+        //     return $('.alarm_bar').height();;
+        //   }else {
+        //     return 0;
+        //   }
+        //   
+        // };
+        alarm_h = (alarm_dis == 'block') ? $('.alarm_bar').height() : 0;
+    
+    
+    console.log(alarm_dis);
+    console.log(alarm_h);
+
+  }
+  
+  ui_resize();
+  
+  
+  function ui_resize(a) {  
+    var win_h = $(window).height(),
+        logo_h = 100,
+        footer_h = 60,
+        menu_bottom_h = $('.menu:last-child').height(),
+        alarm_dis = $('.alarm_bar').css('display'),
+        alarm_h = (alarm_dis == 'block') ? $('.alarm_bar').height() : 0;
+        sum_h = win_h-(alarm_h+logo_h+footer_h);
+    
+    $('.container').css('height', sum_h);
+    $('#include_nav').css('height', sum_h);
+    $('.menu:first-child').css('height', sum_h - menu_bottom_h);
+
+  }
+  
+  
+  
+  
+  
+  
+  </script>
+  
+</body>
+</html>
