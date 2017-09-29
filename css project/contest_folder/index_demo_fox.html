@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>the little prince Demo fox</title>
+<style>
+body { background: #fff; position: relative; overflow: hidden;}
+
+.fox{
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  margin-left: -77.5px;
+  display: inline-block;
+}
+.fox_body{
+  position: relative;
+  width: 155px;
+  height: 203px;
+  background-image: url("img/img_fox_body.png");
+  background-size: 155px 203px;
+}
+.fox_body .fox_tail_position{
+  position: absolute;
+  top: -69px;
+  left: -60px;
+}
+.fox_body .fox_tail_position .fox_tail{
+  transform-origin: 50% 100%;
+  position: absolute;
+  width: 135px;
+  height: 269px;
+  background-image: url("img/img_fox_tail.png");
+  background-size: 135px 269px;
+  animation: tick 3s ease-in-out infinite;
+}
+
+@keyframes tick {
+  0%,
+  100% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(-15deg);
+  }
+}
+
+
+</style>
+</head>
+
+<body>
+<div class="fox">
+    <div class="fox_body">
+        <div class="fox_tail_position">
+            <div class="fox_tail"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
