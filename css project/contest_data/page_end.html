@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>the little prince</title>
+<link href="./css/bg_style.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=BenchNine" rel="stylesheet">
+<style>
+/* ------------ FONTS --------------- */
+html, body {
+   font-family: 'BenchNine', sans-serif;
+   text-transform: uppercase;
+   font-size: 49px;
+   letter-spacing: -.04rem;
+   text-align: center;
+}
+h2,h3{
+    color: #fff;
+}
+h2{
+    text-align: left;
+    padding-left: 2.5rem;
+    line-height: 1.3rem;
+    margin-top: 10px;
+}
+h3 {
+    display: block;
+    font-size: .31rem;
+    letter-spacing: .04rem;
+    height: 35px;
+    line-height: 35px;
+    padding-top: 10px;
+}
+span.supporting {
+   font-size: .63rem;
+   display: block;
+}
+/* ----------- LAYOUT --------------*/
+body {
+   /* hide everything that doesn't fit on-screen*/
+   height: 100%;
+   overflow: hidden;
+}
+body > div * {
+   position: relative;
+}
+body > div > div {
+   width: 500px;
+   margin-bottom: 554px;
+   margin-left: auto;
+   margin-right: auto;
+}
+body > div > div:first-of-type {
+   margin-top: 40vh;
+}
+
+body > div > div:last-of-type {
+   margin-bottom: 50vh;;
+}
+/* these are the same for all animations */
+h2::after {
+   animation-timing-function: ease-in-out;
+   animation-fill-mode: both;
+   /* add z-index since we can't use visibility for the hidden letters*/
+   z-index: 1;
+}
+.directed h2::after {
+   /* --- The T in TRACHTENBERG --- */
+   content: "";
+   position: absolute;
+   border-left: .123rem solid white;
+   top: 0;
+   left: 2.05rem;
+   bottom: -11.32rem;
+   animation-name: directedT;
+   animation-duration: 6s;
+   animation-delay: 2s;
+}
+.directed h3{
+    text-align: left;
+    margin-left: 100px;
+}
+@keyframes directedT {
+   from {bottom: .191rem;}
+   to {bottom: -11.32rem;}
+}
+.screenplay h2:last-of-type::after {
+   /* --- The I in DAMIEN --- */
+   content: "";
+   position: absolute;
+   border-left: .12rem solid white;
+   top: -4.25rem;
+   left: 2.05rem;;
+   bottom: -11.324rem;
+   animation-name: screenplayI;
+   animation-duration: 6s;
+   animation-delay: 5.4s;
+}
+.screenplay h3{
+    text-align: left;
+    margin-left: 100px;
+}
+@keyframes screenplayI {
+   from {bottom: .18rem;}
+   to {bottom: -11.324rem;}
+}
+.story h2:last-of-type::after {
+   /* --- The T in MATT --- */
+   content: "";
+   position: absolute;
+   border-left: .123rem solid white;
+   top: -2.76rem;
+   left: 2.05rem;
+   bottom: -11.31rem;
+   animation-name: storyT;
+   animation-duration: 6s;
+   animation-delay: 13.3s;
+}
+.story h3{
+    text-align: left;
+    margin-left: 100px;
+}
+@keyframes storyT {
+   from {bottom: .18rem;}
+   to {bottom: -11.33rem;}
+}
+@keyframes producedR {
+   from {bottom: .18rem;}
+   to {bottom: -.808rem;}
+}
+@keyframes producedI {
+   from {bottom: .18rem;}
+   to {bottom: -70vh;} /* = margin-bottom*/
+}
+/* fade in to start */
+body {
+   animation-name: fadeIn;
+   animation-duration: .7s;
+   animation-delay: .8s;
+   animation-timing-function: ease;
+   animation-fill-mode: both;
+}
+@keyframes fadeIn {
+   from {opacity: 0;}
+   to {opacity: 1;}
+}
+/* scroll the credits through they body window */
+div.credits {
+   animation-name: scroll;
+   animation-duration: 17s;
+   animation-delay: 2.6s;
+   /* start and end very slowly, then go quickly */
+   animation-timing-function: cubic-bezier(.81,0,.19,1);
+   animation-fill-mode: both;
+}
+/* stop at key points to see each credit */
+@keyframes scroll {
+   0% {}
+   33% {transform: translateY(-850px) /*translateY(-30vh)*/;}
+   100% {transform: translateY(-1800px) /*translateY(-30vh)*/;}
+}
+.msg_text{
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    margin-left: -354px;
+    color:#fff;
+    text-align: right;
+    font-size: 49px;
+    line-height: 41px;
+    font-weight: bold;
+}
+
+/*** button ***/
+.btn_area{
+    position: relative;
+    text-align: left;
+    margin-left: 120px;
+    margin-top: 10px;
+}
+.btn_area label{
+    cursor: pointer;
+    vertical-align: top;
+}
+
+.btn_area input[type="checkbox"]{
+    display: none
+}
+.btn_area a{
+    text-decoration: none;
+    vertical-align: top;
+}
+.btn {
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: none;
+    border: 2px solid #fff;
+    letter-spacing: normal;
+}
+.btn_axe {
+    transition: all 200ms cubic-bezier(0.39, 0.5, 0.15, 1.36);
+    box-shadow: white 0 0px 0px 1px inset;
+    transition-duration: 0.5s;
+}
+.btn_axe:hover {
+    color: #333;
+    box-shadow: white 0 0px 0px 40px inset;
+}
+.btn_axe .hover_msg{
+    display: none;
+}
+.btn_axe:hover .hover_msg{
+    display: block;
+    position: absolute;
+    font-weight: bold;
+    color: #333;
+    top: 65px;
+    width: 192px;
+    background: #fff;
+    padding: 10px 10px 8px;
+    line-height: 20px;
+    font-size: 14px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+}
+label.btn_axe:hover .hover_msg {
+    left: -2px;
+}
+a.btn_axe:hover .hover_msg {
+    left: -115px;
+}
+.btn_axe:hover .hover_msg:before{
+    content: '';
+    position: absolute;
+    top: -4px;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+label.btn_axe:hover .hover_msg:before {
+    left: 20px;
+}
+a.btn_axe:hover .hover_msg:before {
+    right: 20px;
+}
+.btn_axe input[type="checkbox"] + .payment_area{
+    display: none;
+}
+.btn_axe input[type="checkbox"]:checked + .payment_area{
+    display: block;
+}
+.payment_area{
+    position: absolute;
+    top: -337px;
+    left: -115px;
+    width: 320px;
+    height: 420px;
+    padding: 20px;
+    background: #fff;
+    color: #000;
+    z-index: 10;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+}
+.payment_area h4{
+    font-size: 30px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+.payment_area .other_pay{
+    font-size: 16px;
+    color: #666;
+    padding: 10px 0;
+    text-align: center;
+    text-transform:none;
+    font-family: Helvetica,"Apple SD Gothic Neo",sans-serif;
+}
+.payment_area .other_pay a,
+.payment_area .other_pay a:hover{
+    text-decoration: none;
+    color: #333;
+}
+.payment_area .other_pay .info{
+    margin: 30px 0 10px;
+}
+.payment_area .other_pay .btn_paypal{
+    display: block;
+    height: 34px;
+    padding: 10px 0;
+    background: #ccd1d5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+}
+.payment_area .other_pay .btn_paypal span{
+    vertical-align: top;
+    line-height: 34px;
+    margin-right: 10px;
+}
+.payment_area .card{
+    text-align: center;
+}
+/*** loading bar ***/
+@-webkit-keyframes    load{
+    0%   {margin-left:0%;opacity:0;}
+    15%  {opacity: 1}
+    25%  {margin-left:55%;}
+    50%  {margin-left:60%;}
+    75%  {opacity: 1}
+    80%  {margin-left:100%;opacity:0;}
+}
+@-webkit-keyframes    load2{
+    0%   {margin-left:-20%;opacity:0;}
+    15%  {opacity: 1}
+    30%  {margin-left:50%;}
+    55%  {margin-left:55%;}
+    75%  {opacity: 1}
+    90%  {margin-left:100%;opacity:0;}
+}
+@-webkit-keyframes    load3{
+    0%   {margin-left:-30%;opacity:0;}
+    15%  {opacity: 1}
+    35%  {margin-left:45%;}
+    60%  {margin-left:50%;}
+    75%  {opacity: 1}
+    100% {margin-left:100%;opacity:0;}
+}
+@-webkit-keyframes    load4{
+    0%   {margin-left:-40%;opacity:0;}
+    15%  {opacity: 1}
+    40%  {margin-left:40%;}
+    65%  {margin-left:45%;}
+    75%  {opacity: 1}
+    100% {margin-left:80%;opacity:0;}
+}
+.rolling{
+    background:#666;
+    width:5px;
+    height:5px;
+    opacity:0;
+    border-radius: 20px;
+    -webkit-animation: load 5s infinite linear ;
+}
+.dadu2{
+    margin-left:-10px;
+    -webkit-animation: load2 5s infinite linear ;
+}
+.dadu3{
+    margin-left:-10px;
+    -webkit-animation: load3 5s infinite linear ;
+}
+.dadu4{
+    margin-left:-10px;
+    -webkit-animation: load4 5s infinite linear ;
+}
+.loading-bar{
+    width:300px;
+    margin-top: 5px;
+    position: absolute;
+    overflow: hidden;
+}
+#loading{
+    margin: 0px auto;
+    width: 300px;
+}
+#loading p{
+    text-align: center;
+    font-family: Helvetica,"Apple SD Gothic Neo",sans-serif;
+    text-transform: none;
+}
+</style>
+</head>
+<body>
+    <h1 class="blind">The Little Prince</h1>
+    <!-- bg color -->
+    <div class="bg_area">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <!-- bg_star image -->
+    <div id='stars'></div>
+    <div id='stars2'></div>
+    <div id='stars3'></div>
+    <!-- ending credits -->
+    <div class="msg_text">
+        thank you<br>for reading
+    </div>
+    <div class="credits">
+        <div class="directed">
+            <h3>Planning by</h3>
+            <h2>Kim Yeong deuk</h2>
+        </div>
+        <div class="screenplay">
+            <h3>Production by</h3>
+            <h2>Park Sang hun</h2>
+            <h2><span class="supporting">and</span>Im Kyung kyu</h2>
+            <h2><span class="supporting">and</span>Han Da hye</h2>
+        </div>
+        <div class="story">
+            <h3>Original by</h3>
+            <h2>The<br>Little Prince</h2>
+            <h2><span class="supporting">------</span>option</h2>
+            <div class="btn_area">
+                <label class="btn btn_axe">payment
+                    <input type="checkbox" />
+                    <div class="payment_area" title="클릭하면 창이 닫힙니다.">
+                        <h4>payment system</h4>
+                        <div class="card">
+                            <svg width="250px" height="200px" viewBox="0 0 300 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch -->
+                                <desc>Created with Sketch.</desc>
+                                <defs></defs>
+                                <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect id="Rectangle" fill="#E6567A" x="2.84217094e-14" y="0" width="300" height="200" rx="8"></rect>
+                                    <rect id="Rectangle-2" fill="#303334" x="0" y="20" width="300" height="40"></rect>
+                                    <g id="Group-2" transform="translate(25.000000, 85.000000)">
+                                        <rect id="Rectangle-4" fill="#B5BBBF" x="149" y="0" width="50" height="35"></rect>
+                                        <rect id="Rectangle-3" fill="#CCD1D5" x="0" y="0" width="150" height="35"></rect>
+                                    </g>
+                                    <g id="Group-3" transform="translate(25.000000, 139.313433)">
+                                        <rect id="Rectangle-5" fill="#FC8AA6" x="0" y="0.686567164" width="150" height="12"></rect>
+                                        <rect id="Rectangle-6" fill="#FD8AA7" x="0" y="20.6865672" width="115" height="12"></rect>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <div id="loading">
+                            <p>Connecting...</p>
+                            <div class="loading-bar">
+                                <div class="rolling"></div>
+                            </div>
+                            <div class="loading-bar">
+                                <div class="rolling dadu2"></div>
+                            </div>
+                            <div class="loading-bar">
+                                <div class="rolling dadu3"></div>
+                            </div>
+                            <div class="loading-bar">
+                                <div class="rolling dadu4"></div>
+                            </div>
+                        </div>
+                        <div class="other_pay">
+                            <p class="info">or select other payment method</p>
+                            <span class="btn_paypal">
+                                <span>Pay with</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="127.769px" height="31.5px" viewBox="0 0 127.769 31.5" enable-background="new 0 0 127.769 31.5" xml:space="preserve">
+                                <g>
+                                	<g>
+                                		<g>
+                                			<path fill="#009CDE" d="M98.396,6.933H91.37c-0.479,0-0.89,0.35-0.964,0.824l-2.841,18.015c-0.056,0.355,0.219,0.676,0.579,0.676     h3.604c0.335,0,0.622-0.244,0.674-0.576l0.807-5.107c0.074-0.474,0.483-0.824,0.964-0.824h2.223c4.628,0,7.298-2.239,7.996-6.678     c0.314-1.941,0.014-3.467-0.896-4.535C102.518,7.553,100.746,6.933,98.396,6.933z M99.207,13.512     c-0.384,2.522-2.31,2.522-4.173,2.522h-1.061l0.744-4.708c0.045-0.285,0.29-0.495,0.578-0.495h0.485c1.269,0,2.467,0,3.084,0.723     C99.234,11.986,99.347,12.626,99.207,13.512z"/>
+                                			<path fill="#003087" d="M48.288,6.933h-7.025c-0.481,0-0.89,0.35-0.965,0.824l-2.841,18.015     c-0.056,0.355,0.219,0.676,0.579,0.676h3.354c0.48,0,0.889-0.349,0.964-0.823l0.767-4.86c0.075-0.474,0.484-0.824,0.964-0.824     h2.223c4.627,0,7.298-2.239,7.997-6.678c0.314-1.941,0.012-3.467-0.896-4.535C52.409,7.553,50.638,6.933,48.288,6.933z      M49.099,13.512c-0.384,2.522-2.31,2.522-4.173,2.522h-1.06l0.743-4.708c0.045-0.285,0.291-0.495,0.579-0.495h0.486     c1.268,0,2.466,0,3.083,0.723C49.126,11.986,49.238,12.626,49.099,13.512z"/>
+                                			<path fill="#003087" d="M69.286,13.432h-3.363c-0.289,0-0.534,0.209-0.579,0.494l-0.147,0.94l-0.236-0.341     c-0.728-1.058-2.352-1.41-3.973-1.41c-3.716,0-6.891,2.816-7.509,6.766c-0.322,1.971,0.135,3.854,1.252,5.169     c1.026,1.208,2.492,1.71,4.237,1.71c2.995,0,4.657-1.924,4.657-1.924l-0.15,0.935c-0.056,0.355,0.218,0.677,0.578,0.677h3.03     c0.48,0,0.889-0.349,0.965-0.822l1.817-11.517C69.921,13.752,69.646,13.432,69.286,13.432z M64.598,19.979     c-0.325,1.923-1.851,3.212-3.797,3.212c-0.976,0-1.757-0.314-2.259-0.907c-0.498-0.59-0.685-1.429-0.527-2.363     c0.303-1.905,1.854-3.237,3.771-3.237c0.955,0,1.73,0.316,2.243,0.917C64.543,18.205,64.746,19.05,64.598,19.979z"/>
+                                			<path fill="#009CDE" d="M119.394,13.432h-3.363c-0.288,0-0.533,0.209-0.578,0.494l-0.148,0.94l-0.235-0.341     c-0.729-1.058-2.352-1.41-3.973-1.41c-3.718,0-6.893,2.816-7.51,6.766c-0.321,1.971,0.135,3.854,1.252,5.169     c1.026,1.208,2.492,1.71,4.237,1.71c2.995,0,4.657-1.924,4.657-1.924l-0.15,0.935c-0.057,0.355,0.219,0.677,0.578,0.677h3.03     c0.479,0,0.889-0.349,0.964-0.822l1.818-11.517C120.029,13.752,119.754,13.432,119.394,13.432z M114.706,19.979     c-0.325,1.923-1.851,3.212-3.797,3.212c-0.976,0-1.757-0.314-2.26-0.907c-0.496-0.59-0.685-1.429-0.526-2.363     c0.304-1.905,1.853-3.237,3.77-3.237c0.956,0,1.731,0.316,2.243,0.917C114.651,18.205,114.854,19.05,114.706,19.979z"/>
+                                			<path fill="#003087" d="M87.204,13.432h-3.382c-0.323,0-0.626,0.16-0.808,0.427l-4.664,6.87l-1.978-6.601     c-0.123-0.414-0.504-0.696-0.935-0.696h-3.324c-0.401,0-0.683,0.395-0.555,0.774l3.724,10.929l-3.502,4.941     C71.506,30.464,71.784,31,72.259,31h3.379c0.319,0,0.619-0.157,0.802-0.42l11.246-16.229     C87.954,13.962,87.676,13.432,87.204,13.432z"/>
+                                			<path fill="#009CDE" d="M123.359,7.427l-2.883,18.344c-0.057,0.355,0.218,0.676,0.578,0.676h2.9c0.48,0,0.889-0.349,0.964-0.822     l2.843-18.016c0.056-0.355-0.219-0.677-0.578-0.677h-3.246C123.65,6.933,123.404,7.143,123.359,7.427z"/>
+                                		</g>
+                                	</g>
+                                	<g>
+                                		<path fill="#009CDE" d="M23.675,7.876c0.378-2.412-0.002-4.053-1.307-5.539C20.932,0.701,18.338,0,15.019,0H5.384    C4.706,0,4.128,0.494,4.022,1.164L0.01,26.604c-0.079,0.503,0.309,0.956,0.817,0.956h5.948l-0.411,2.604    C6.295,30.603,6.635,31,7.08,31h5.014c0.593,0,1.098-0.432,1.191-1.018l0.049-0.255l0.944-5.989l0.061-0.331    c0.093-0.586,0.598-1.019,1.191-1.019h0.75c4.857,0,8.66-1.972,9.771-7.68c0.465-2.384,0.225-4.375-1.003-5.774    C24.676,8.512,24.214,8.162,23.675,7.876L23.675,7.876"/>
+                                		<path fill="#012169" d="M23.675,7.876c0.378-2.412-0.002-4.053-1.307-5.539C20.932,0.701,18.338,0,15.019,0H5.384    C4.706,0,4.128,0.494,4.022,1.164L0.01,26.604c-0.079,0.503,0.309,0.956,0.817,0.956h5.948l1.494-9.475l-0.046,0.298    c0.106-0.671,0.678-1.164,1.357-1.164h2.827c5.552,0,9.899-2.256,11.17-8.779C23.614,8.247,23.646,8.061,23.675,7.876"/>
+                                		<path fill="#003087" d="M9.875,7.908c0.063-0.403,0.322-0.733,0.67-0.9c0.158-0.076,0.335-0.118,0.521-0.118h7.553    c0.895,0,1.729,0.059,2.492,0.182c0.218,0.035,0.43,0.075,0.636,0.121c0.206,0.045,0.406,0.096,0.6,0.153    c0.097,0.028,0.192,0.058,0.286,0.089c0.375,0.125,0.724,0.271,1.044,0.441c0.378-2.412-0.002-4.053-1.307-5.539    C20.932,0.701,18.338,0,15.019,0H5.384C4.706,0,4.128,0.494,4.022,1.164L0.01,26.604c-0.079,0.503,0.309,0.956,0.817,0.956h5.948    l1.494-9.475L9.875,7.908z"/>
+                                	</g>
+                                </g>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <p class="hover_msg">더 많은 컨텐츠를 이용하시려면 결제가 필요합니다.</p>
+                </label>
+                <a href="#" class="btn btn_axe">replay<span class="hover_msg">처음부터 다시보기 합니다.</span></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
