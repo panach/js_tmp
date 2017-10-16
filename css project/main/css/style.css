@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=BenchNine');
+
 body {
   background: #000;
   
@@ -48,7 +50,6 @@ section {
   height: 100%;
   width: 100%;
   background-color: transparent;
-  pointer-events: none;
   z-index: 0;
   overflow: hidden;
   -webkit-transition: transform 2s ease-in;
@@ -616,9 +617,9 @@ move3 { 0% {
   background: url(../img/i_boy.png) 0 0 no-repeat;
   -webkit-animation: boy_walk 1.2s infinite steps(4, end);
   animation: boy_walk 1.2s infinite steps(4, end);
-  -webkit-transform: scale(0.7) translateX(-50%);
-  -ms-transform: scale(0.7) translateX(-50%);
-  transform: scale(0.7) translateX(-50%);
+  -webkit-transform: scale(0.5) translateX(-90%);
+  -ms-transform: scale(0.5) translateX(-90%);
+  transform: scale(0.5) translateX(-90%);
 }
 
 @keyframes boy_walk {
@@ -650,6 +651,7 @@ move3 { 0% {
     padding-left: 190px;
     line-height: 60px;
     margin-top: 10px;
+    margin-bottom: 20px;
 }
 #s_6 h2 .kor{
     display: inline-block;
@@ -721,7 +723,7 @@ move3 { 0% {
    content: "";
    position: absolute;
    border-left: 6px solid white;
-   top: -342px;
+   top: -365px;
    left: 165px;
    bottom: 0;
    animation-name: screenplayI;
@@ -740,7 +742,7 @@ move3 { 0% {
    content: "";
    position: absolute;
    border-left: 6px solid white;
-   top: -128px;
+   top: -142px;
    left: 165px;
    bottom: -2vh;
    animation-name: storyT;
@@ -768,7 +770,7 @@ move3 { 0% {
 /* stop at key points to see each credit */
 @keyframes scroll {
    0% {}
-   50% {transform: translateY(-750px);}
+   50% {transform: translateY(-800px);}
    100% {transform: translateY(-1750px);}
 }
 #s_6 .msg_text{
@@ -891,6 +893,7 @@ move3 { 0% {
     font-size: 30px;
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
+    margin: 0;
 }
 #s_6 .payment_area .other_pay{
     font-size: 16px;
@@ -994,4 +997,5 @@ move3 { 0% {
     text-align: center;
     font-family: Helvetica,"Apple SD Gothic Neo",sans-serif;
     text-transform: none;
+    margin: 0;
 }
